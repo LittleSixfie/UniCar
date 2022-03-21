@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card>
+    <div class="fecha">
+      <h1>Jueves 5 de Mayo 2022</h1>
+    </div>
+
+    <div class="origen">
+      <h1>10:00</h1>
+      <h1>Estación de San Telmo</h1>
+      <mat-icon>arrow_downward</mat-icon>
+      <h1>12:00</h1>
+      <h1>Tafira</h1>
+    </div>
+
+  </mat-card>
+  <div class="precio"></div>
+  <mat-card>
+    <div class="usuario"></div>
+    <h1>Jacobo Proveda</h1>
+    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+    <mat-icon>account_circle</mat-icon>
+    <div class="plazas"></div>
+  </mat-card>
+  <mat-card>
+    <div class="coche"></div>
+  </mat-card>
+  <button mat-raised-button color="warn">Unirse/Gestionar</button>
+</div>

@@ -1,21 +1,132 @@
-<p>viaje works!</p>
+<h2 >UNICAR</h2>
 
 <div>
-    <mat-form-field>
-        <mat-label>Nombre</mat-label>
+    <mat-form-field class = "viaje-form">
+        <mat-label>Nombre Conductor</mat-label>
         <input matInput
-               type="text"
-               placeholder="Nombre"
-               [formControl]="inputControl">
+                
+                type="text"
+                placeholder="Nombre"
+                [formControl]="inputControl">
         
     </mat-form-field>
-    <mat-form-field>
-        <mat-label>Apellidos</mat-label>
-        <input matInput
-               type="text"
-               placeholder="Apellidos"
-               [formControl]="inputControl">
-    </mat-form-field>
+    
+    <table cellspacing="0"><tr>
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Origen</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Origen"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        
+        </td>
+
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Destino</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Destino"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        </td>
+    </tr>
+    </table>
+
+    <table cellspacing="0"><tr>
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Fecha</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Fecha"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        
+        </td>
+
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Hora</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Hora"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        </td>
+    </tr>
+    </table>
+
+    <table cellspacing="0"><tr>
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Modelo Coche</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Modelo Coche"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        
+        </td>
+
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Marca Coche</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Marca Coche"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        </td>
+
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Color Coche</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Color Coche"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        </td>
+    </tr>
+    </table>
+
+    <table cellspacing="0"><tr>
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Capacidad</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Capacidad"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        
+        </td>
+
+        <td appearance="fill">
+            <mat-form-field>
+                <mat-label>Precio</mat-label>
+                <input matInput
+                        
+                    type="text"
+                    placeholder="Precio"
+                    [formControl]="inputControl">
+            </mat-form-field>
+        </td>
+    </tr>
+    </table>
+    
+    
         
     
  </div>

@@ -1,28 +1,31 @@
 <div class="container">
-  <mat-card>
+  <mat-card class="card">
     <div class="fecha">
       <h1>Jueves 5 de Mayo 2022</h1>
     </div>
 
     <div class="origen">
-      <h1>10:00</h1>
-      <h1>Estación de San Telmo</h1>
+      <h1>{{horaIda}}</h1>
+      <h1>{{origen}}</h1>
       <mat-icon>arrow_downward</mat-icon>
-      <h1>12:00</h1>
-      <h1>Tafira</h1>
+      <h1>{{horaVuelta}}</h1>
+      <h1>{{destino}}</h1>
     </div>
-
   </mat-card>
   <div class="precio"></div>
-  <mat-card>
+  <mat-card class="card">
     <div class="usuario"></div>
-    <h1>Jacobo Proveda</h1>
-    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+    <h1>{{user}}</h1>
+    <ngb-rating [(rate)]="currentRate" [readonly]="true" [max]="5"></ngb-rating>
     <mat-icon>account_circle</mat-icon>
     <div class="plazas"></div>
   </mat-card>
-  <mat-card>
-    <div class="coche"></div>
+  <mat-card class="card">
+    <div class="coche">
+      <h1>{{coche}}</h1>
+      <h2>{{color}}</h2>
+      <mat-icon>directions_car</mat-icon>
+    </div>
   </mat-card>
-  <button mat-raised-button color="warn">Unirse/Gestionar</button>
+  <button mat-raised-button color="warn" (click)="unirse()" >Unirse/Gestionar</button>
 </div>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowViajeComponent } from './show-viaje/show-viaje.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatCardModule} from '@angular/material/card'; 
 import { MatButtonModule} from '@angular/material/button';
@@ -19,7 +20,8 @@ import { MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

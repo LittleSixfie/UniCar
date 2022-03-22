@@ -6,7 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-viaje.component.css'],
 })
 export class ShowViajeComponent implements OnInit {
-  constructor() {}
+  currentRate = 2;
+  origen = '';
+  destino = '';
+  horaIda = '';
+  horaVuelta = '';
+  user = '';
+  coche = '';
+  color = '';
 
+  constructor() {}
+  unirse():void{
+    
+  }
   ngOnInit(): void {}
 }

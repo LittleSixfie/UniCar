@@ -9,6 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatCardModule} from '@angular/material/card'; 
 import { MatButtonModule} from '@angular/material/button';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,9 @@ import { MatButtonModule} from '@angular/material/button';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

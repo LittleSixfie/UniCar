@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "UniCar:build:production",
+            "firebaseProject": "unicar-c3d27",
+            "firebaseHostingSite": "unicar-c3d27"
+          }
         }
       }
     }

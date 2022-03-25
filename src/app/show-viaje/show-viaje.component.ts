@@ -15,7 +15,7 @@ export class ShowViajeComponent implements OnInit {
   coche = '';
   color = '';
 
-  constructor() {}
+  
   unirse():void{
     
   }

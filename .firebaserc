@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "unicar-c3d27"
+  },
+  "targets": {
+    "unicar-c3d27": {
+      "hosting": {
+        "UniCar": [
+          "unicar-c3d27"
+        ]
+      }
+    }
+  }
+}

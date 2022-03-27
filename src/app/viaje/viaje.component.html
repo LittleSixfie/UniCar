@@ -1,132 +1,141 @@
-<h2 >UNICAR</h2>
+<div class="header">
+    <mat-toolbar>
+        <h2>UniCar</h2>
+        <img src="images/logo_unicar.jpg">
+        <button mat-button color="primary">Mi perfil
+            <mat-icon matSuffix>person_outline</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
 
-<div>
-    <mat-form-field class = "viaje-form">
-        <mat-label>Nombre Conductor</mat-label>
-        <input matInput
-                
+<p> You entered {{value}}</p>
+
+<div class = "viaje-uno">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre Conductor</mat-label>
+            <input matInput        
+                    type="text"
+                    placeholder="Nombre"
+                    [value] = "value"
+                    [(ngModel)]="value"
+                    [formControl]="inputControl">
+        </mat-form-field>
+    </form>   
+</div>
+
+<div  class = "viaje-dos">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Origen</mat-label>
+            <input matInput      
                 type="text"
-                placeholder="Nombre"
+                placeholder="Origen"
                 [formControl]="inputControl">
+        </mat-form-field>
         
-    </mat-form-field>
-    
-    <table cellspacing="0"><tr>
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Origen</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Origen"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        
-        </td>
-
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Destino</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Destino"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        </td>
-    </tr>
-    </table>
-
-    <table cellspacing="0"><tr>
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Fecha</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Fecha"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        
-        </td>
-
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Hora</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Hora"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        </td>
-    </tr>
-    </table>
-
-    <table cellspacing="0"><tr>
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Modelo Coche</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Modelo Coche"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        
-        </td>
-
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Marca Coche</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Marca Coche"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        </td>
-
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Color Coche</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Color Coche"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        </td>
-    </tr>
-    </table>
-
-    <table cellspacing="0"><tr>
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Capacidad</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Capacidad"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        
-        </td>
-
-        <td appearance="fill">
-            <mat-form-field>
-                <mat-label>Precio</mat-label>
-                <input matInput
-                        
-                    type="text"
-                    placeholder="Precio"
-                    [formControl]="inputControl">
-            </mat-form-field>
-        </td>
-    </tr>
-    </table>
-    
-    
+        <mat-form-field appearance="fill">
+            <mat-label>Destino</mat-label>
+            <input matInput 
+                type="text"
+                placeholder="Destino"
+                [formControl]="inputControl">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Fecha"
+                [formControl]="inputControl">
+                <mat-icon matSuffix>date_range</mat-icon>
+        </mat-form-field>
         
     
- </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Hora</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Hora"
+                [formControl]="inputControl">
+        </mat-form-field>
+    </form>
+    
+</div>
+
+<div class = "viaje-tres">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Modelo Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Modelo Coche"
+                [formControl]="inputControl">
+        </mat-form-field>
+    
+    
+    
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Marca Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Marca Coche"
+                [formControl]="inputControl">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Color Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Color Coche"
+                [formControl]="inputControl">
+        </mat-form-field>
+    </form>
+    
+
+</div>
+
+<div class = "viaje-dos">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Capacidad</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Capacidad"
+                [formControl]="inputControl">
+                <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+        
+    
+
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Precio"
+                [formControl]="inputControl">
+        </mat-form-field>
+        
+    </form>
+    <button mat-raised-button color="primary">Crear Viaje</button>
+</div>
+
+<div class="footer">
+    <mat-toolbar>
+        <p> Unicar es una organización que nace con el objetivo de<br> 
+            reducir  la huella de carbono de muchas persona <br> 
+            que se dirijen a la universidad con el coche vacio y <br> 
+            que nos les importaria compartirlo 
+        </p>
+        <h2>UniCar</h2>
+    </mat-toolbar>
+</div>

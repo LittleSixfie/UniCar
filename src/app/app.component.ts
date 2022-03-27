@@ -32,6 +32,9 @@ export class AppComponent {
 
   }
 
+
+
+  // Pruebas varias para el bucle anidado de user.favTrips
   async getFavTrips(f: any, key?: any, value?: any) {
     //u.map((a: any,v: any) => console.log(a,v))
     //const t = u as DocumentReference;

@@ -5,10 +5,6 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { connectFirestoreEmulator, DocumentReference, getFirestore, doc, getDoc } from 'firebase/firestore';
 import { Observable, of, tap } from 'rxjs';
 
-interface User {
-
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

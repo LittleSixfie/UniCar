@@ -22,8 +22,11 @@ export class AppComponent {
 
   constructor(firestore: Firestore) {
     this.firestore = firestore;
+
+    // Para conectarse a los emuladores en local
     //const db = getFirestore();
     //connectFirestoreEmulator(db, 'localhost', 8081);
+
     const coll = collection(this.firestore, 'users');
     this.user$ = collectionData(coll);
 

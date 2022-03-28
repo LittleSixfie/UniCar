@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShowViajeService} from '../services/show-viaje.service'
 
 @Component({
   selector: 'app-show-viaje',
@@ -15,9 +16,9 @@ export class ShowViajeComponent implements OnInit {
   coche = '';
   color = '';
 
-  
+  constructor(private showViaje: ShowViajeService){}
   unirse():void{
-    
+    this.showViaje.readAll();
   }
   ngOnInit(): void {}
 }

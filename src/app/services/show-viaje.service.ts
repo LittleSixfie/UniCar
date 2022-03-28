@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Trips } from '../trips.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowViajeService {
-  items?: Observable<any[]>;
-  constructor(firestore: AngularFirestore, private db: AngularFireDatabase) {
-    this.items = firestore.collection('trips').snapshotChanges();
-    this.items.subscribe(params => {
-      console.log(params); 
-   });
-    this.items.forEach(element => {
-      console.log('bucle1')
-      console.log(element[0]);
-    });
 
+  private dbPath = "/trips";
+  userRef: AngularFirestoreCollection<Trips>;
+
+  constructor(private db: AngularFirestore) {
+    
+    this.userRef = db.collection(this.dbPath);
   }
+
+  readAll(){
+    const userCosas = 
+    (this.userRef.get()).forEach((doc)=>{
+      console.log(doc.docChanges())
+    })
+  }
+
    
 }

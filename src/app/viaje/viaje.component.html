@@ -8,7 +8,6 @@
     </mat-toolbar>
 </div>
 
-<p> You entered {{value}}</p>
 
 <div class = "viaje-uno">
     <form>
@@ -18,7 +17,7 @@
                     type="text"
                     placeholder="Nombre"
                     [value] = "value"
-                    [(ngModel)]="value"
+                    [(ngModel)]="trip.nameDriver"
                     [formControl]="inputControl">
         </mat-form-field>
     </form>   
@@ -31,6 +30,7 @@
             <input matInput      
                 type="text"
                 placeholder="Origen"
+                [(ngModel)]="trip.origin"
                 [formControl]="inputControl">
         </mat-form-field>
         
@@ -39,6 +39,7 @@
             <input matInput 
                 type="text"
                 placeholder="Destino"
+                [(ngModel)]="trip.destination"
                 [formControl]="inputControl">
         </mat-form-field>
         <br>
@@ -48,6 +49,7 @@
                     
                 type="text"
                 placeholder="Fecha"
+                [(ngModel)]="trip.date"
                 [formControl]="inputControl">
                 <mat-icon matSuffix>date_range</mat-icon>
         </mat-form-field>
@@ -59,6 +61,7 @@
                     
                 type="text"
                 placeholder="Hora"
+                [(ngModel)]="trip.hour"
                 [formControl]="inputControl">
         </mat-form-field>
     </form>
@@ -73,6 +76,7 @@
                     
                 type="text"
                 placeholder="Modelo Coche"
+                [(ngModel)]="trip.model_car"
                 [formControl]="inputControl">
         </mat-form-field>
     
@@ -85,6 +89,7 @@
                     
                 type="text"
                 placeholder="Marca Coche"
+                [(ngModel)]="trip.brand_car"
                 [formControl]="inputControl">
         </mat-form-field>
     
@@ -94,6 +99,7 @@
                     
                 type="text"
                 placeholder="Color Coche"
+                [(ngModel)]="trip.colour_car"
                 [formControl]="inputControl">
         </mat-form-field>
     </form>
@@ -109,6 +115,7 @@
                     
                 type="text"
                 placeholder="Capacidad"
+                [(ngModel)]="trip.seats"
                 [formControl]="inputControl">
                 <mat-icon matSuffix>account_box</mat-icon>
         </mat-form-field>
@@ -122,11 +129,12 @@
                     
                 type="text"
                 placeholder="Precio"
+                [(ngModel)]="trip.price"
                 [formControl]="inputControl">
         </mat-form-field>
         
     </form>
-    <button mat-raised-button color="primary">Crear Viaje</button>
+    <button (click) = "saveTrip()" mat-raised-button color="primary">Crear Viaje</button>
 </div>
 
 <div class="footer">

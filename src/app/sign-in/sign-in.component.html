@@ -1,0 +1,48 @@
+<h1>Crear una cuenta de UniCar</h1>
+<div class = "user_submit_form">
+
+        <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        required 
+        [(ngModel)]="user.userName"
+        placeholder="Nombre"/>
+
+        <input 
+        type="text" 
+        class="form-control" 
+        id="age" 
+        required 
+        [(ngModel)]="user.userAge"
+        placeholder="Edad"/><br>
+
+        <input type="text"
+        class="form-control" 
+        id="passwd" 
+        required 
+        [(ngModel)]="user.password"
+        placeholder="Contraseña"><br>
+
+        <input type="text"
+        class="form-control" 
+        id="passwdRepeat" 
+        placeholder="Repetir contraseña"><br>
+
+        <input type="text"
+        class="form-control" 
+        id="email" 
+        required 
+        [(ngModel)]="user.email" 
+        placeholder="Correo Electrónico"><br>
+
+        <input type="text"
+        class="form-control" 
+        id="phone" 
+        required 
+        [(ngModel)]="user.phone"
+        placeholder="Telefono"><br>
+
+        <button (click)="saveUser()">Registrarme</button>
+</div>
+

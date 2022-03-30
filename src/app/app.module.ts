@@ -9,9 +9,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatCardModule} from '@angular/material/card'; 
 import { MatButtonModule} from '@angular/material/button';
-import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +26,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatCardModule,
     MatIconModule,
     NgbModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

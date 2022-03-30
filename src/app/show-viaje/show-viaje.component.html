@@ -1,29 +1,29 @@
 <div class="container">
   <mat-card class="card">
     <div class="fecha">
-      <h1>Jueves 5 de Mayo 2022</h1>
+      <h1>{{viaje.date}}</h1>
     </div>
 
     <div class="origen">
-      <h1>{{horaIda}}</h1>
-      <h1>{{origen}}</h1>
+      <h1>{{viaje.origin}}</h1>
+      <h1>{{viaje.date}}</h1>
       <mat-icon>arrow_downward</mat-icon>
-      <h1>{{horaVuelta}}</h1>
-      <h1>{{destino}}</h1>
+      <h1>{{viaje.destiny}}</h1>
+      <h1>{{viaje.date}}</h1>
     </div>
   </mat-card>
   <div class="precio"></div>
   <mat-card class="card">
     <div class="usuario"></div>
-    <h1>{{user}}</h1>
-    <ngb-rating [(rate)]="currentRate" [readonly]="true" [max]="5"></ngb-rating>
+    <h1>{{viaje.nameDriver}}</h1>
+    <ngb-rating [(rate)]="rate" [readonly]="true" [max]="5"></ngb-rating>
     <mat-icon>account_circle</mat-icon>
     <div class="plazas"></div>
   </mat-card>
   <mat-card class="card">
     <div class="coche">
-      <h1>{{coche}}</h1>
-      <h2>{{color}}</h2>
+      <h1>{{viaje.car.brand}}</h1>
+      <h2>{{viaje.car.model}}</h2>
       <mat-icon>directions_car</mat-icon>
     </div>
   </mat-card>

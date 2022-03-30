@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ShowViajeService} from '../services/show-viaje.service'
+import { ShowViajeService } from '../services/show-viaje.service';
+import { Trips } from '../trips.model';
 
 @Component({
   selector: 'app-show-viaje',
@@ -7,18 +8,33 @@ import {ShowViajeService} from '../services/show-viaje.service'
   styleUrls: ['./show-viaje.component.css'],
 })
 export class ShowViajeComponent implements OnInit {
-  currentRate = 2;
-  origen = '';
-  destino = '';
-  horaIda = '';
-  horaVuelta = '';
-  user = '';
-  coche = '';
-  color = '';
-
-  constructor(private showViaje: ShowViajeService){}
-  unirse():void{
-    this.showViaje.readAll();
+  viaje = {
+    car: {
+      brand: '',
+      color: '',
+      model: '',
+    },
+    nameDriver: '',
+    passenger: {
+      driver: '',
+    },
+    date: '',
+    origin: '',
+    destiny: '',
+    hour: '',
+    seats: 0,
+    price: 0,
+    distance: 0,
+  };
+  rate = 2.5;
+  constructor(private showViaje: ShowViajeService) {
+   
   }
-  ngOnInit(): void {}
+
+  unirse(): void {
+    const viajes = this.showViaje.read('trip01');
+    this.viaje = viajes;
+    console.log(this.viaje);
+  }
+  ngOnInit(): void {};
 }

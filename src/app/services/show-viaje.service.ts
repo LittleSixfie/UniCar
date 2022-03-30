@@ -1,26 +1,36 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Trips } from '../trips.model'
+
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { doc, getDoc } from 'firebase/firestore';
+
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShowViajeService {
+  trips$: Observable<any[]>;
+  firestore: Firestore;
 
-  private dbPath = "/trips";
-  userRef: AngularFirestoreCollection<Trips>;
-
-  constructor(private db: AngularFirestore) {
-    
-    this.userRef = db.collection(this.dbPath);
+  constructor(firestore: Firestore) {
+    this.firestore = firestore;
+    this.trips$ = collectionData(collection(this.firestore, 'trips'));
   }
 
-  readAll(){
-    const userCosas = 
-    (this.userRef.get()).forEach((doc)=>{
-      console.log(doc.docChanges())
-    })
+  read(string: string):any[any]{
+    const docRef = collection(this.firestore, 'trips');
+    const dbInstance = doc(this.firestore, ("trips/"+string));
+    getDoc(dbInstance)
+      .then((response) => {
+        console.log(response.data());
+        if (response.data() == undefined) {
+          console.log('dentro')
+          return undefined;
+        }
+        return response.data();
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   }
-
-   
 }

@@ -1,5 +1,4 @@
 export interface Trips {
-
     nameDriver? : string
     date? : string
     origin? : string
@@ -10,5 +9,4 @@ export interface Trips {
     colour_car? : string
     seats? : number
     price? : number
-
 }

@@ -11,6 +11,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
+import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +25,8 @@ import { ViajeComponent } from './viaje/viaje.component';
     ViajeComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -34,7 +37,7 @@ import { ViajeComponent } from './viaje/viaje.component';
     MatIconModule,
     FormsModule,
     MatToolbarModule,
-    MatDatepickerModule
+    MatDatepickerModule,
     
   ],
   providers: [],

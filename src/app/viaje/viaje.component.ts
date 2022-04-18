@@ -25,11 +25,10 @@ export class ViajeComponent implements OnInit {
   }
 
   saveTrip(): void{
-    this.viajeService.create(this.trip).then(() =>{
-      console.log('Usuario guardado');
-      this.submitted = true;
-    });
+    this.viajeService.create(this.trip)
   }
+
+  
 
   newTrip(): void {
     this.submitted = false;

@@ -14,6 +14,10 @@
   color: white
 }
 
+.header img{
+  margin-left: 550px;
+}
+
 
 
   
@@ -63,4 +67,8 @@
 
   .footer h2{
     margin-left: 300px;
+  }
+
+  .viaje-dos button{
+    background-color: #009688;
   }

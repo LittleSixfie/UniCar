@@ -1,1 +1,68 @@
-<p>update works!</p>
+<form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre y Apellidos</mat-label>
+                    <input type="text" matInput>
+                    <mat-error *ngIf="usernameNotNull('text')">
+                        Enter a valid username
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-mid-width" appearance="fill">
+                    <mat-label>Edad</mat-label>
+                    <input type="number" matInput>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Teléfono</mat-label>
+                    <span matPrefix>+34 &nbsp;</span>
+                    <input type="tel" matInput placeholder="652 395 478">
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-radio-group aria-label="driver">
+                    <mat-label>¿Eres conductor?</mat-label> <br>
+                    <mat-radio-button value="Yes">Si </mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+            </td>
+        </tr>
+
+    </table>
+
+    
+</form>

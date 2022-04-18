@@ -4,7 +4,7 @@ export class User {
     userName!: String;
     userAge?: Number;
     userPassword?: String;
-    userEmail?: String;
+    userEmail!: String;
     userTlf?: String;
     userDriver?: Boolean;
     userDriverLicense?: String;

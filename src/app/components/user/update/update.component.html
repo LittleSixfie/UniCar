@@ -1,68 +1,106 @@
-<form class="example-form">
-    <table class="example-full-width" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Nombre y Apellidos</mat-label>
-                    <input type="text" matInput>
-                    <mat-error *ngIf="usernameNotNull('text')">
-                        Enter a valid username
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field class="example-mid-width" appearance="fill">
-                    <mat-label>Edad</mat-label>
-                    <input type="number" matInput>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
-                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="emailFormControl.hasError('required')">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input type="password" matInput>
-                </mat-form-field>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Teléfono</mat-label>
-                    <span matPrefix>+34 &nbsp;</span>
-                    <input type="tel" matInput placeholder="652 395 478">
-                </mat-form-field>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <mat-radio-group aria-label="driver">
-                    <mat-label>¿Eres conductor?</mat-label> <br>
-                    <mat-radio-button value="Yes">Si </mat-radio-button>
-                    <mat-radio-button value="No">No</mat-radio-button>
-                </mat-radio-group>
-            </td>
-        </tr>
-
-    </table>
-
+<div class="header">
+    <mat-toolbar>
+        <img src="./assets/1.png" width="100" height="70" />
+        <button mat-button color="primary">Mi perfil
+            <mat-icon matSuffix>person_outline</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
+<div class="pagina">
+    <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre y Apellidos</mat-label>
+                        <input matInput 
+                            type="text" 
+                            [(ngModel)]="user.userName"
+                            [formControl]="inputControl">
+                        <mat-error *ngIf="usernameNotNull('text')">
+                            Enter a valid username
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-mid-width" appearance="fill">
+                        <mat-label>Edad</mat-label>
+                        <input matInput
+                        type="number" 
+                        [(ngModel)]="user.userAge"
+                        [formControl]="inputControl">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput 
+                            placeholder="Ex. pat@example.com"
+                            [(ngModel)]="user.userEmail"
+                            [formControl]="inputControl">
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" matInput
+                        [(ngModel)]="user.userPassword"
+                        [formControl]="inputControl">
+                    </mat-form-field>
+                </td>
+            </tr>
     
-</form>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Teléfono</mat-label>
+                        <span matPrefix>+34 &nbsp;</span>
+                        <input type="tel" matInput 
+                        [(ngModel)]="user.userTlf"
+                        [formControl]="inputControl">
+                    </mat-form-field>
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    <mat-radio-group aria-label="driver">
+                        <mat-label>¿Eres conductor?</mat-label> <br>
+                        <mat-radio-button value="Yes">Si </mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            <!-- Foto de carné de conducir
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Carné de conducir</mat-label>
+                    </mat-form-field>
+                </td>
+            -->
+            </tr>
+    
+        </table>       
+    </form>
+    <div class="footer">
+        <mat-toolbar>
+            <p> Unicar es una organización que nace con el objetivo de<br> 
+                reducir  la huella de carbono de muchas persona <br> 
+                que se dirijen a la universidad con el coche vacio y <br> 
+                que nos les importaria compartirlo 
+            </p>
+            <h2>UniCar</h2>
+        </mat-toolbar>
+    </div>
+</div>

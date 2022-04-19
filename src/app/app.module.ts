@@ -1,39 +1,45 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon'
+import { FormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
 
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateComponent } from './components/user/create/create.component';
-import { ReadComponent } from './components/user/read/read.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateComponent } from './components/user/update/update.component';
-import { DeleteComponent } from './components/user/delete/delete.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
-import {MatRadioModule} from '@angular/material/radio';
-
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateComponent,
-    ReadComponent,
-    UpdateComponent,
-    DeleteComponent,
+    UpdateComponent
   ],
   imports: [
-    BrowserModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    NoopAnimationsModule, 
+    AngularFirestoreModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule, 
-    MatRadioModule    
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

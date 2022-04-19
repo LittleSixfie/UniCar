@@ -19,3 +19,35 @@
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+
+  .footer .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 10px;
+    padding: 40px;
+    line-height: 100%;
+  }
+
+  .footer h2{
+    margin-left: 300px;
+  }
+
+  .header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  
+  .header h2{
+    margin-left: 550px;
+  }
+  .header button{
+    margin-left: 500px;
+    color: white
+  }
+  
+  .header img{
+    margin-left: 550px;
+  }

@@ -8,33 +8,39 @@ import { Trips } from '../trips.model';
   styleUrls: ['./show-viaje.component.css'],
 })
 export class ShowViajeComponent implements OnInit {
-  viaje = {
-    car: {
-      brand: '',
-      color: '',
-      model: '',
-    },
-    nameDriver: '',
-    passenger: {
-      driver: '',
-    },
-    date: '',
-    origin: '',
-    destiny: '',
-    hour: '',
-    seats: 0,
-    price: 0,
-    distance: 0,
-  };
+  viaje:Trips ={
+    nameDriver:"",
+    date:"",
+    origin:"",
+    destination:"",
+    hour:"",
+    model_car:"",
+    brand_car:"",
+    colour_car:"",
+    seats:0,
+    price:0,
+  }
   rate = 2.5;
+
   constructor(private showViaje: ShowViajeService) {
-   
+    
   }
 
-  unirse(): void {
-    const viajes = this.showViaje.read('trip01');
-    this.viaje = viajes;
-    console.log(this.viaje);
+  unirse():void {
+    const viajes =  this.showViaje.read('fQOrRsXaAxgPbNppqKf9')
+    viajes.then((response) => {
+      console.log(response.data());
+      if (response.data() == undefined) {
+        console.log('dentro')
+        return undefined;
+      }
+      this.viaje= response.data();
+      return true;
+    })
+    .catch((err) => {
+      console.log(err)
+      alert(err.message);
+    })
   }
   ngOnInit(): void {};
 }

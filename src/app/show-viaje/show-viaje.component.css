@@ -1,3 +1,73 @@
 .container{
-    padding:10%;
+    padding-bottom:3%;
 }
+
+.card{
+    margin: 3%
+}
+
+
+#secondCard{
+    display: flex;
+    flex-direction: row;
+}
+
+.usuario{
+    display:flex;
+    flex-direction: column;
+}
+
+#icon{
+    
+    padding-left: 5%;
+}
+
+#icon > mat-icon{
+    marign:auto;
+    font-size:50px;
+}
+
+.boton{
+    display: flex;
+    
+}
+
+.unirseBoton{
+    margin: auto;
+    background-color: #4DB6AC;
+    color:white;
+}
+
+.header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  
+  .header h2{
+    margin-left: 550px;
+  }
+  .header button{
+    margin-left: 500px;
+    color: white
+  }
+  
+  .header img{
+    margin-left: 550px;
+  }
+
+  .footer .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 10px;
+    padding: 40px;
+    line-height: 100%;
+  }
+
+  .footer h2{
+    margin-left: 300px;
+  }
+  
+  

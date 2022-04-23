@@ -17,20 +17,10 @@ export class ShowViajeService {
     this.trips$ = collectionData(collection(this.firestore, 'trips'));
   }
 
-  read(string: string):any[any]{
-    const docRef = collection(this.firestore, 'trips');
+  read(string: string):Promise<any>{
     const dbInstance = doc(this.firestore, ("trips/"+string));
-    getDoc(dbInstance)
-      .then((response) => {
-        console.log(response.data());
-        if (response.data() == undefined) {
-          console.log('dentro')
-          return undefined;
-        }
-        return response.data();
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+    console.log("trips/"+string)
+    return getDoc(dbInstance)
+      
   }
 }

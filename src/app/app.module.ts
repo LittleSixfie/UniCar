@@ -22,6 +22,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
+    ShowViajeComponent,
     AppComponent,
     ViajeComponent
   ],

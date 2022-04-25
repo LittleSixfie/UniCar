@@ -19,10 +19,18 @@ export class ViajeService {
     this.db = db;
   }
 
-   public create(trip: Trip): Boolean{
+   public async create(trip: Trip): Promise<string>{
     const res = collection(this.db, "trips")
-    addDoc(res, JSON.parse(JSON.stringify(trip)));
-    return true;
+    const id = addDoc(res, JSON.parse(JSON.stringify(trip)));
+    let aux: string =""; 
+    const id2 = collectionData(res,{idField: 'id'}) as 
+    Observable<Trip>;
+    
+    await id.then(function(data){
+      aux=data.id
+      return data.id
+    });
+    return aux;
   }
 
   

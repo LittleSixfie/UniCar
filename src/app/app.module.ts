@@ -13,18 +13,24 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
 import { initializeApp,provideFirebaseApp, getApp } from '@angular/fire/app';
-
+import {MatCardModule} from '@angular/material/card'; 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViajeComponent } from './viaje/viaje.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ShowViajeComponent } from './show-viaje/show-viaje.component';
+import { CreateComponent } from './components/user/create/create.component';
 
 
 @NgModule({
   declarations: [
     ShowViajeComponent,
     AppComponent,
-    ViajeComponent
+    ViajeComponent,
+    CreateComponent,
+    ShowViajeComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -40,9 +46,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatToolbarModule,
     MatDatepickerModule,
-    
+    MatCardModule,
     NoopAnimationsModule,
-    provideFirestore(() => getFirestore()),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

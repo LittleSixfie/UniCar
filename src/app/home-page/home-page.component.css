@@ -1,0 +1,15 @@
+.header .mat-toolbar{
+    position: center;
+    height: 100px;
+    background: #4DB6AC;
+}
+
+#botonViaje {
+    background-color:#009688;
+    color: white;
+}
+
+#botonSesion {
+    background-color:#009688;
+    color: white;
+}

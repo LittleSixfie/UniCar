@@ -23,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ShowViajeComponent } from './show-viaje/show-viaje.component';
 import { CreateComponent } from './components/user/create/create.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CreateComponent } from './components/user/create/create.component';
     AppComponent,
     ViajeComponent,
     CreateComponent,
-    ShowViajeComponent
+    ShowViajeComponent,
+    HomePageComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),

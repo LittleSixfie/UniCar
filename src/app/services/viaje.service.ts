@@ -3,7 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Trip } from '../models/trips.model'
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection } from '@firebase/firestore';
-
+import { Observable } from 'rxjs';
+import { collectionData } from 'rxfire/firestore';
  
 
 @Injectable({

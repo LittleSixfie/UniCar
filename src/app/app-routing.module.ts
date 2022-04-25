@@ -22,7 +22,7 @@ const routes: Routes = [
   //{path:'puntuaviaje', component:},
   //{path:'puntuaCompañeros', component:},
   //{path:'politicaDatos', component:},
-  //{path:'**', component:},
+  {path:'**', component: HomePageComponent},
   //{path:'search, component:},
 ];
 @NgModule({

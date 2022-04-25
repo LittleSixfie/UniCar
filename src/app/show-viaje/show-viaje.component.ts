@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { Trips } from '../trips.model';
-
+import { Router, ActivatedRoute } from '@angular/router'; 
 @Component({
   selector: 'app-show-viaje',
   templateUrl: './show-viaje.component.html',
@@ -22,12 +22,8 @@ export class ShowViajeComponent implements OnInit {
   }
   rate = 2.5;
 
-  constructor(private showViaje: ShowViajeService) {
-    
-  }
-
-  unirse():void {
-    const viajes =  this.showViaje.read('fQOrRsXaAxgPbNppqKf9')
+  constructor(private showViaje: ShowViajeService, private router :ActivatedRoute ) {
+    const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
     viajes.then((response) => {
       console.log(response.data());
       if (response.data() == undefined) {
@@ -41,6 +37,10 @@ export class ShowViajeComponent implements OnInit {
       console.log(err)
       alert(err.message);
     })
+  }
+
+  unirse():void {
+    
   }
   ngOnInit(): void {};
 }

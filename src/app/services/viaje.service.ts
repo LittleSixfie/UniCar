@@ -5,6 +5,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { collectionData } from 'rxfire/firestore';
+import { Router } from '@angular/router';
  
 
 @Injectable({
@@ -15,7 +16,7 @@ export class ViajeService {
   db : Firestore;
   
 
-  constructor(db: Firestore) {
+  constructor(db: Firestore, private router:Router) {
     this.db = db;
   }
 
@@ -30,6 +31,8 @@ export class ViajeService {
       aux=data.id
       return data.id
     });
+
+    this.router.navigate(["viaje/" + aux])
     return aux;
   }
 

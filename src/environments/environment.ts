@@ -14,7 +14,7 @@ export const environment = {
     authDomain: 'unicar-c3d27.firebaseapp.com',
     messagingSenderId: '776079287373',
     measurementId: 'G-Y51FXHQKTR',
-  }
+  },
 };
 
 /*

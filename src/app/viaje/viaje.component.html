@@ -1,0 +1,150 @@
+<div class="header">
+    <mat-toolbar>
+        
+        <img src="./assets/logo_unicar.jpg" width="100" height="70" />
+        <button mat-button color="primary">Mi perfil
+            <mat-icon matSuffix>person_outline</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
+
+
+<div class = "viaje-uno">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre Conductor</mat-label>
+            <input matInput        
+                    type="text"
+                    placeholder="Nombre"
+                    [value] = "value"
+                    [(ngModel)]="trip.nameDriver"
+                    [formControl]="inputControl">
+        </mat-form-field>
+    </form>   
+</div>
+
+<div  class = "viaje-dos">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Origen</mat-label>
+            <input matInput      
+                type="text"
+                placeholder="Origen"
+                [(ngModel)]="trip.origin"
+                [formControl]="inputControl">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Destino</mat-label>
+            <input matInput 
+                type="text"
+                placeholder="Destino"
+                [(ngModel)]="trip.destination"
+                [formControl]="inputControl">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Fecha"
+                [(ngModel)]="trip.date"
+                [formControl]="inputControl">
+                <mat-icon matSuffix>date_range</mat-icon>
+        </mat-form-field>
+        
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Hora</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Hora"
+                [(ngModel)]="trip.hour"
+                [formControl]="inputControl">
+        </mat-form-field>
+    </form>
+    
+</div>
+
+<div class = "viaje-tres">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Modelo Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Modelo Coche"
+                [(ngModel)]="trip.model_car"
+                [formControl]="inputControl">
+        </mat-form-field>
+    
+    
+    
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Marca Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Marca Coche"
+                [(ngModel)]="trip.brand_car"
+                [formControl]="inputControl">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Color Coche</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Color Coche"
+                [(ngModel)]="trip.colour_car"
+                [formControl]="inputControl">
+        </mat-form-field>
+    </form>
+    
+
+</div>
+
+<div class = "viaje-dos">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Capacidad</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Capacidad"
+                [(ngModel)]="trip.seats"
+                [formControl]="inputControl">
+                <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+        
+    
+
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput
+                    
+                type="text"
+                placeholder="Precio"
+                [(ngModel)]="trip.price"
+                [formControl]="inputControl">
+        </mat-form-field>
+        
+    </form>
+    <button (click) = "saveTrip()" mat-raised-button color="primary">Crear Viaje</button>
+
+</div>
+
+<div class="footer">
+    <mat-toolbar>
+        <p> Unicar es una organización que nace con el objetivo de<br> 
+            reducir  la huella de carbono de muchas persona <br> 
+            que se dirijen a la universidad con el coche vacio y <br> 
+            que nos les importaria compartirlo 
+        </p>
+        <h2>UniCar</h2>
+    </mat-toolbar>
+</div>

@@ -31,7 +31,7 @@ export class ShowViajeComponent implements OnInit {
     viajes.then((response) => {
       console.log(response.data());
       if (response.data() == undefined) {
-        console.log('dentro')
+        console.log('Not Found')
         return undefined;
       }
       this.viaje= response.data();

@@ -8,7 +8,6 @@ import {MatIconModule} from '@angular/material/icon'
 import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
@@ -19,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViajeComponent } from './viaje/viaje.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { AppRoutingModule } from './app-routing.module';
 
 import { ShowViajeComponent } from './show-viaje/show-viaje.component';
 import { CreateComponent } from './components/user/create/create.component';
@@ -49,6 +50,7 @@ import { CreateComponent } from './components/user/create/create.component';
     MatCardModule,
     NoopAnimationsModule,
     NgbModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

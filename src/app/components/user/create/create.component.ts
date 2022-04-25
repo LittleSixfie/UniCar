@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { CrudUserService } from 'src/app/services/crud-user.service';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
+  submitted = false;
+  hide = true;
 
-  ngOnInit(): void {
+  constructor(private crudUserService: CrudUserService) {}
+
+  ngOnInit(): void {}
+
+  saveUser(): void {
+    this.crudUserService.create(this.user)
+  }
+
+  newUser(): void {
+    this.submitted = false;
+    this.user = new User;
   }
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { addDoc, collection } from '@firebase/firestore';
 import { User } from '../models/user';
 
 @Injectable({
@@ -13,6 +14,8 @@ export class CrudUserService {
   }
 
   public create(user: User): Boolean{
+    const res = collection(this.db, 'users')
+    addDoc(res, JSON.parse(JSON.stringify(user)));
     return true;
   }
 

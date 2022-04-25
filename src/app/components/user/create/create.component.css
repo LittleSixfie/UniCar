@@ -1,0 +1,72 @@
+.title_text {
+    position: center;
+    margin-left: 650px;
+    font-family: 'Roboto';
+}
+
+.header .mat-toolbar {
+    position: center;
+    height: 100px;
+    background: #009688;
+}
+
+.user_submit_form {
+    margin-left: 350px;
+}
+
+.field .mat-form-field {
+    width: 700px;
+}
+
+.upload_buttons {
+    display: flex;
+}
+
+#name {
+    width: 500px;
+}
+
+#age {
+    margin-left: 15px;
+    width: 185px;
+}
+
+#carnet {
+    background-color: #4DB6AC;
+    color: white;
+    border-radius: 100px;
+    font-family: 'Roboto';
+    text-align: center;
+    font-size: 16px;
+    width: 220px;
+    height: 44px;
+}
+
+#perfil {
+    background-color: #4DB6AC;
+    color: white;
+    border-radius: 100px;
+    font-family: 'Roboto';
+    text-align: center;
+    font-size: 16px;
+    width: 149px;
+    height: 44px;
+    margin-top: 5px;
+}
+
+#regBut {
+    background-color: #4DB6AC;
+    color: white;
+    border-radius: 100px;
+    font-family: 'Roboto';
+    text-align: center;
+    font-size: 16px;
+    width: 121px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.register{
+    margin-left: 300px;
+    margin-top: 25px;
+}

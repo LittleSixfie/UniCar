@@ -31,6 +31,7 @@ import { ShowViajeComponent } from './show-viaje/show-viaje.component';
 import { ReadComponent } from './components/user/read/read.component';
 import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     HeaderComponent,
     FooterComponent,
     ShowViajeComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -63,7 +64,9 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     MatCardModule,
     NoopAnimationsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

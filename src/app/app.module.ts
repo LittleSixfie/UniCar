@@ -12,6 +12,17 @@ import { ReadComponent } from './components/user/read/read.component';
 import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatCardModule } from '@angular/material/card'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';  
+import { MatListModule } from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { ShowViajeComponent } from './show-viaje/show-viaje.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +30,22 @@ import { DeleteComponent } from './components/user/delete/delete.component';
     ReadComponent,
     UpdateComponent,
     DeleteComponent,
+    HeaderComponent,
+    FooterComponent,
+    ShowViajeComponent,
   ],
   imports: [
     BrowserModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatListModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

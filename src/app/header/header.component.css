@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    flex-flow: row wrap;
+}
+.header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+}
+.header h2{
+    margin-left: 550px;
+}
+.header button{
+    margin-left: 500px;
+    color: white
+}
+.header img{
+    margin-left: 42%;
+    width: 150px;
+    height: 150px;
+}
+#icon{   
+    padding-left: 5%;
+}
+#icon > mat-icon{
+    margin:auto;
+    font-size:50px;
+}

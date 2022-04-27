@@ -1,1 +1,107 @@
-<p>update works!</p>
+<app-header></app-header>
+<div class="container">
+    <div class="user-form">
+
+        <h1><b>Datos Personales</b></h1>
+        <mat-card class="viaje-uno">
+            <img mat-card-image class="profile-pic" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu">
+            <mat-card-actions align="end">
+                <button mat-raised-button class="primary-button" color="primary">Cambiar</button>
+                <button mat-raised-button color="warn">Borrar</button>
+            </mat-card-actions>
+        </mat-card>
+
+        <div class="viaje-uno">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre y Apellidos</mat-label>
+                    <input matInput type="text" [(ngModel)]="user.userName" [formControl]="inputControl">
+                    <mat-error *ngIf="usernameNotNull('text')">
+                        Enter a valid username
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div class="viaje-dos">
+            <form class="example-form">
+                <mat-form-field class="example-mid-width" appearance="fill">
+                    <mat-label>Edad</mat-label>
+                    <input matInput type="number" [(ngModel)]="user.userAge" [formControl]="inputControl">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Teléfono</mat-label>
+                    <span matPrefix>+34 &nbsp;</span>
+                    <input type="tel" matInput [(ngModel)]="user.userTlf" [formControl]="inputControl">
+                </mat-form-field>
+            </form>
+        </div>
+
+        <div class="boton-uno">
+            <button (click) = "onUpdate()" class="primary-button" mat-raised-button color="primary">Actualizar Perfil</button>
+        </div>
+
+
+        <h1><b>Viajes</b></h1>
+        <div class="viajes-fav">
+            <h2>Mis viajes favoritos</h2>
+
+            <mat-card class="viaje-uno">
+                <mat-card-title>Viaje 1</mat-card-title>
+                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                <mat-card-actions align="end">
+                    <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
+                    <button mat-raised-button color="warn">Borrar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <div class="viajes-creados">
+            <h2>Mis viajes creados</h2>
+
+            <mat-card class="viaje-uno">
+                <mat-card-title>Viaje 1</mat-card-title>
+                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                <mat-card-actions align="end">
+                    <button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>
+                    <button mat-raised-button color="warn">Borrar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <div class="viajes-solicitados">
+            <h2>Mis viajes solicitados</h2>
+
+            <mat-card class="viaje-uno">
+                <mat-card-title>Viaje 1</mat-card-title>
+                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                <mat-card-actions align="end">
+                    <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
+                    <button mat-raised-button color="warn">Borrar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+
+    <!--
+            <tr>
+                <td>
+                    <mat-radio-group aria-label="driver">
+                        <mat-label>¿Eres conductor?</mat-label> <br>
+                        <mat-radio-button value="Yes">Si </mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+                    Foto de carné de conducir
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Carné de conducir</mat-label>
+                    </mat-form-field>
+                </td>
+            </tr>
+        -->
+
+</div>
+<app-footer></app-footer>

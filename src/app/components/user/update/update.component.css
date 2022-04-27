@@ -1,0 +1,104 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .example-mid-width{
+      width: 50%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  .viaje-uno .mat-form-field{
+    width: 600px;
+  }
+
+  .viaje-dos .mat-form-field{
+    width: 230px;
+    margin: auto 20px auto 0px;
+  }
+
+
+  .viaje-dos{
+    width: 600px;
+    margin: 10px auto;
+  }
+
+  .viaje-uno{
+    width: 600px;
+    margin: 10px auto;
+  }
+
+  .footer .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 10px;
+    padding: 40px;
+    line-height: 100%;
+  }
+
+  .footer h2{
+    margin-left: 300px;
+  }
+
+  .header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  .user-form{
+      margin: 30px;
+  }
+
+  .profile-pic{
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      margin:auto;
+  }
+  
+  .mat-card-image:first-child{
+    border-top-left-radius:50%;
+    border-top-right-radius: 50%;
+  }
+
+  .header h2{
+    margin-left: 550px;
+  }
+  .header button{
+    margin-left: 500px;
+    color: white
+  }
+  
+  .header img{
+    margin-left: 550px;
+  }
+
+  .primary-button{
+    background: #009688;
+    color: white;
+    margin: 0 auto;
+  }
+
+  .boton-uno{
+    width: 600px;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .container{
+      padding-bottom: 110px;
+  }

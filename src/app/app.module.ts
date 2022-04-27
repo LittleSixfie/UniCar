@@ -16,7 +16,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from './components/user/create/create.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { RatingModule } from "primeng/rating";
 
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatCardModule } from '@angular/material/card'; 
@@ -66,7 +66,8 @@ import { MatDividerModule } from '@angular/material/divider';
     NgbModule,
     AppRoutingModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

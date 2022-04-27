@@ -73,14 +73,16 @@ export class CreateComponent implements OnInit {
   }
 
   private uploadPictures(){
-    if(this.License !=  null){
+    if(this.License !=  undefined){
       const licenseRef = ref(this.storage, `${this.user.userEmail}/License/${this.user.userDriverLicense}`)
       uploadBytes(licenseRef, this.License)
     }
-    if(this.Picture != null){
+    if(this.Picture != undefined){
       const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.Picture)
     }
+    this.License = undefined;
+    this.Picture = undefined;
   }
 
 }

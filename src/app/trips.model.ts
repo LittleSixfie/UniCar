@@ -9,5 +9,5 @@ export interface Trips {
     colour_car? : string
     seats? : number
     price? : number
-    
+    passenger?: []
 }

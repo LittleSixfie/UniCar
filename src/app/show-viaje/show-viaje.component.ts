@@ -19,8 +19,10 @@ export class ShowViajeComponent implements OnInit {
     colour_car:"",
     seats:0,
     price:0,
+    passenger:[]
   }
   rate = 2.5;
+  asientosLibres:number =0;
 
   constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router ) {
     const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
@@ -31,12 +33,14 @@ export class ShowViajeComponent implements OnInit {
         return undefined;
       }
       this.viaje= response.data();
+      this.asientosLibres = response.data().seats - response.data().passenger.length
       return true;
     })
     .catch((err) => {
       console.log(err)
       alert(err.message);
     })
+    
   }
 
   update():void{
@@ -44,7 +48,11 @@ export class ShowViajeComponent implements OnInit {
   }
 
   unirse():void {
-    
+    if(this.asientosLibres > 0 ){
+      
+    } else {
+      alert("No hay espacio")
+    }
   }
   ngOnInit(): void {};
 }

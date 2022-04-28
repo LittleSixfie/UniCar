@@ -1,0 +1,78 @@
+.header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  
+  .header h2{
+    margin-left: 550px;
+  }
+  .header button{
+    margin-left: 500px;
+    color: white
+  }
+  
+  .header img{
+    margin-left: 550px;
+  }
+  
+  
+  
+    
+    .viaje-uno .mat-form-field{
+      width: 600px;
+    }
+  
+    .viaje-uno form{
+      margin-left: 300px;
+    }
+  
+    .viaje-dos form{
+      margin-left: 350px;
+    }
+  
+    .viaje-dos .mat-form-field{
+      width: 220px;
+    }
+  
+    .viaje-dos form > *{
+      margin: 10px ;
+    }
+  
+    .viaje-dos button{
+      margin-left: 550px;
+    }
+  
+    .viaje-tres form{
+      margin-left: 300px;
+    }
+  
+    .viaje-tres .mat-form-field{
+      width: 220px;
+    }
+  
+    .viaje-tres form > *{
+      margin: 10px ;
+    }
+  
+    .footer .mat-toolbar{
+      text-align: center;
+      background: #009688;
+      font-size: 10px;
+      padding: 40px;
+      line-height: 100%;
+    }
+  
+    .footer h2{
+      margin-left: 300px;
+    }
+    h1{
+        text-align: center;
+    }
+  
+    .viaje-dos button{
+      background-color: #009688;
+    }
+  

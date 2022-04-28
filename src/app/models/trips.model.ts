@@ -10,6 +10,6 @@ export class Trip {
     colour_car? : string
     seats? : number
     price? : number
-
+    
 
 }

@@ -55,10 +55,10 @@
     </div>
 
     <div class="upload_buttons">
-        <button matButton id="carnet">Subir carnet de conducir
+        <button matButton (click)="searchLicense()" id="carnet">Subir carnet de conducir
             <mat-icon>file_upload</mat-icon>
         </button>
-        <button matButton id="perfil">Subir foto de perfil
+        <button matButton (click)="searchPicture()" id="perfil">Subir foto de perfil
             <mat-icon>file_upload</mat-icon>
         </button>
     </div>

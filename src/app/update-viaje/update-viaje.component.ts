@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 //import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { UpdateViajeServiceService } from '../services/update-viaje-service.service';
-import { Trips } from '../trips.model';
+import { Trip } from '../models/trips.model';
 
 @Component({
   selector: 'app-update-viaje',
@@ -12,7 +12,7 @@ import { Trips } from '../trips.model';
 })
 export class UpdateViajeComponent implements OnInit {
   
-  viaje:Trips ={
+  viaje:Trip ={
     nameDriver:"",
     date:"",
     origin:"",

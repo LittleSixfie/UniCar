@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, where, query, getDocs } from '@angular/fire/firestore';
 import { User } from '../models/user';
-import { addDoc, doc, getDoc } from 'firebase/firestore';
-import { Data } from '@angular/router';
+import { addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { Data, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,7 @@ export class CrudUserService {
     fromFirestore: (snapshot: any, options: any) => {
       const data = snapshot.data(options);
       let user: User = new User();
+     
       user.userName = data.userName;
       user.userEmail = data.userEmail;
       user.userAge = data.userAge;
@@ -52,14 +53,24 @@ export class CrudUserService {
     }
   };
 
-  constructor(db: Firestore) {
+  constructor(db: Firestore, private router:Router) {
     this.db = db;
     this.userRef = collection(this.db, this.dbPath).withConverter(this.userConverter);
   }
 
-  public create(user: User): Boolean{
+  public async create(user: User): Promise<Boolean>{
     const res = collection(this.db, 'users')
-    addDoc(res, JSON.parse(JSON.stringify(user)));
+    const id=addDoc(res, JSON.parse(JSON.stringify(user)));
+    let aux: string =""; 
+    await id.then(function(data){
+      aux=data.id
+      return data.id
+    });
+    
+    user.id = aux
+    //FALTA EL UPDATE ~6d2
+    //this.update(aux, user) ~6d2
+    this.router.navigate(["userRead/" + aux])
     return true;
   }
 
@@ -74,7 +85,11 @@ export class CrudUserService {
     return this.userData;
   }
 
-  public update(email: String, user: User): Boolean{
+  public update(id: string, user: User): Boolean{
+    const userDocRef = doc(this.db, 'user/'+id);
+    //No funciona porque haceis una movida turboloca ~6d2
+    setDoc(userDocRef, user)
+    this.router.navigate(["userRead/" + id])
     return true;
   }
 

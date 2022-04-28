@@ -1,6 +1,7 @@
 import { DocumentData, DocumentReference } from '@angular/fire/firestore';
 
 export class User {
+    id?: string;
     userName!: String;
     userAge?: Number;
     userPassword!: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowViajeService } from '../services/show-viaje.service';
-import { Trips } from '../trips.model';
+import { Trip } from '../models/trips.model';
 import { Router, ActivatedRoute } from '@angular/router'; 
 @Component({
   selector: 'app-show-viaje',
@@ -8,7 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./show-viaje.component.css'],
 })
 export class ShowViajeComponent implements OnInit {
-  viaje:Trips ={
+  viaje:Trip ={
+    id:"",
     nameDriver:"",
     date:"",
     origin:"",

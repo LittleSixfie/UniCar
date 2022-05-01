@@ -1,28 +1,25 @@
 
-
+<h1>Editar Viaje</h1>
 <div class = "viaje-uno">
-    <form>
+    <form (ngSubmit)="onUpdate()">
         <mat-form-field appearance="fill">
             <mat-label>Nombre Conductor</mat-label>
             <input matInput        
                     type="text"
                     placeholder="Nombre"
-                    [value] = "value"
-                    [(ngModel)]="trip.nameDriver"
-                    [formControl]="inputControl">
+                    [(ngModel)]="viaje.nameDriver"  name="nameDriver">
         </mat-form-field>
     </form>   
 </div>
 
 <div  class = "viaje-dos">
-    <form>
+    <form (ngSubmit)="onUpdate()">
         <mat-form-field appearance="fill">
             <mat-label>Origen</mat-label>
             <input matInput      
                 type="text"
                 placeholder="Origen"
-                [(ngModel)]="trip.origin"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.origin"  name="origin">
         </mat-form-field>
         
         <mat-form-field appearance="fill">
@@ -30,8 +27,7 @@
             <input matInput 
                 type="text"
                 placeholder="Destino"
-                [(ngModel)]="trip.destination"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.destination"  name="destination">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
@@ -40,8 +36,7 @@
                     
                 type="text"
                 placeholder="Fecha"
-                [(ngModel)]="trip.date"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.date"  name="date">
                 <mat-icon matSuffix>date_range</mat-icon>
         </mat-form-field>
         
@@ -52,23 +47,21 @@
                     
                 type="text"
                 placeholder="Hora"
-                [(ngModel)]="trip.hour"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.hour"  name="hour">
         </mat-form-field>
     </form>
     
 </div>
 
 <div class = "viaje-tres">
-    <form>
+    <form (ngSubmit)="onUpdate()">
         <mat-form-field appearance="fill">
             <mat-label>Modelo Coche</mat-label>
             <input matInput
                     
                 type="text"
                 placeholder="Modelo Coche"
-                [(ngModel)]="trip.model_car"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.model_car"  name="model_car">
         </mat-form-field>
     
     
@@ -80,8 +73,7 @@
                     
                 type="text"
                 placeholder="Marca Coche"
-                [(ngModel)]="trip.brand_car"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.brand_car"  name="brand_car">
         </mat-form-field>
     
         <mat-form-field appearance="fill">
@@ -90,8 +82,7 @@
                     
                 type="text"
                 placeholder="Color Coche"
-                [(ngModel)]="trip.colour_car"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.colour_car"  name="colour_car">
         </mat-form-field>
     </form>
     
@@ -99,15 +90,14 @@
 </div>
 
 <div class = "viaje-dos">
-    <form>
+    <form (ngSubmit)="onUpdate()">
         <mat-form-field appearance="fill">
             <mat-label>Capacidad</mat-label>
             <input matInput
                     
                 type="text"
                 placeholder="Capacidad"
-                [(ngModel)]="trip.seats"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.seats"  name="seats">
                 <mat-icon matSuffix>account_box</mat-icon>
         </mat-form-field>
         
@@ -120,12 +110,11 @@
                     
                 type="text"
                 placeholder="Precio"
-                [(ngModel)]="trip.price"
-                [formControl]="inputControl">
+                [(ngModel)]="viaje.price"  name="price">
         </mat-form-field>
         
     </form>
-    <button (click) = "saveTrip()" mat-raised-button color="primary">Crear Viaje</button>
+    <button (click) = "onUpdate()" mat-raised-button color="primary">Actualizar Viaje</button>
 
 </div>
 

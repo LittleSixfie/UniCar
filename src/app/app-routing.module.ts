@@ -8,10 +8,12 @@ import {DeleteComponent} from "./components/user/delete/delete.component"
 import {ReadComponent} from "./components/user/read/read.component"
 import {UpdateComponent} from "./components/user/update/update.component"
 import { HomePageComponent } from './home-page/home-page.component';
+import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
 
 const routes: Routes = [
   {path:'viaje/:id', component: ShowViajeComponent},
   {path:'createViaje', component: ViajeComponent},
+  {path:'updateViaje/:id', component: UpdateViajeComponent},
   {path:'userCreate', component: CreateComponent},
   {path:'userDelete/:id', component: DeleteComponent},
   {path:'userRead/:id', component: ReadComponent},

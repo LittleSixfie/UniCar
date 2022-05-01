@@ -1,52 +1,50 @@
-<app-header></app-header>
 <div class="container">
-    <mat-card class="cardUsuario">
-        <div class="imagenPerfil">
-            <img src="./../../assets/profile_user.png">
-        </div>
-        <div class="datosUsuario" *ngIf="userData != undefined">
-            <p>{{ userData.userName }}</p>
-            <p>Edad: {{ userData.userAge }}</p>
-            <p>Puntuación: </p>
-            <p>&nbsp;Conductor: {{ userData.driverPoints }}</p>
-            <p>&nbsp;Pasajero: {{ userData.passengerPoints }}</p>
-        </div>
-        <div class="botonesPerfil">
-            <button mat-raised-button disabled>
-                6,385 kg CO2 ahorrado
-            </button>   
-            <button mat-raised-button>
-                <a [routerLink]="['/userUpdate', email]">Modificar perfil</a>
-            </button>
-        </div>
-    </mat-card>
-    <div class="trips">
-        <div class="viajesCreados">
-            <div class="tituloViajes">
-                <p>Viajes Creados</p>
-            </div>
-            <mat-card class="matViajesCreados">
-                <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
-                    <mat-list-item>
-                        <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                </mat-action-list>
-            </mat-card>
-        </div>
-        <div class="viajesSolicitados">
-            <div class="tituloViajes">
-                <p>Viajes Solicitados</p>
-            </div>
-            <mat-card class="matViajesSolicitados">
-                <mat-action-list role="list" *ngFor="let trip of userRequestedTrips">
-                    <mat-list-item>
-                        <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                </mat-action-list>
-            </mat-card>
-        </div>
+  <mat-card class="cardUsuario">
+    <div class="imagenPerfil">
+      <img src="./../../assets/profile_user.png">
     </div>
+    <div class="datosUsuario" *ngIf="userData != undefined">
+      <p>{{ userData.userName }}</p>
+      <p>Edad: {{ userData.userAge }}</p>
+      <p>Puntuación: </p>
+      <p>&nbsp;Conductor: {{ userData.driverPoints }}</p>
+      <p>&nbsp;Pasajero: {{ userData.passengerPoints }}</p>
+    </div>
+    <div class="botonesPerfil">
+      <button mat-raised-button disabled>
+        6,385 kg CO2 ahorrado
+      </button>
+      <button mat-raised-button>
+        <a [routerLink]="['/userUpdate', id]">Modificar perfil</a>
+      </button>
+    </div>
+  </mat-card>
+  <div class="trips">
+    <div class="viajesCreados">
+      <div class="tituloViajes">
+        <p>Viajes Creados</p>
+      </div>
+      <mat-card class="matViajesCreados">
+        <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
+          <mat-list-item>
+            <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-action-list>
+      </mat-card>
+    </div>
+    <div class="viajesSolicitados">
+      <div class="tituloViajes">
+        <p>Viajes Solicitados</p>
+      </div>
+      <mat-card class="matViajesSolicitados">
+        <mat-action-list role="list" *ngFor="let trip of userRequestedTrips">
+          <mat-list-item>
+            <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-action-list>
+      </mat-card>
+    </div>
+  </div>
 </div>
-<app-footer></app-footer>

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { ShowViajeService } from 'src/app/services/show-viaje-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-read',
@@ -10,15 +11,15 @@ import { ShowViajeService } from 'src/app/services/show-viaje-service.service';
   styleUrls: ['./read.component.css']
 })
 export class ReadComponent implements OnInit {
-  email: string
+  id: string
   userData?: User;
   userCreatedTrips?:string[];
   userRequestedTrips?:string[];
 
   //userData = user desde auth
-  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService) { // email: String as a parameter
+  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
     this.userData = new User();
-    this.email = "antonio@gmail.com";
+    this.id = this.router.snapshot.params['id'];
   }
 
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class ReadComponent implements OnInit {
   }
 
   public read(): void {
-    const datos = this.crudUserService.read(this.email);
+    const datos = this.crudUserService.read(this.id);
     datos.then((data) => {
       if(data != undefined) {
         this.userData = data;

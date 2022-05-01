@@ -17,7 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from './components/user/create/create.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
-
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
@@ -32,6 +31,7 @@ import { ReadComponent } from './components/user/read/read.component';
 import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { MatDividerModule } from '@angular/material/divider';
     FooterComponent,
     ShowViajeComponent,
     HomePageComponent,
+    UpdateViajeComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -66,7 +67,7 @@ import { MatDividerModule } from '@angular/material/divider';
     NgbModule,
     AppRoutingModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

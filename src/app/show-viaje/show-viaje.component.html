@@ -1,21 +1,12 @@
-<div class="header">
-  <mat-toolbar>
-    <img src="./../../assets/logo_unicar.png" width="100" height="70" />
-    <button mat-button color="primary">
-      Mi perfil
-      <mat-icon matSuffix>person_outline</mat-icon>
-    </button>
-  </mat-toolbar>
-</div>
 
 <div class="container">
   <mat-card class="card">
     <div class="origen">
-      <h1>{{ viaje.origin }}</h1>
-      <h1>{{ viaje.date }}</h1>
+      <h1>{{ viaje.origin }} <h2>{{ viaje.date }}</h2></h1>
+      
       <mat-icon>arrow_downward</mat-icon>
-      <h1>{{ viaje.destination }}</h1>
-      <h1>{{ viaje.date }}</h1>
+      <h1>{{ viaje.destination }} <h2>{{ viaje.date }}</h2> </h1>
+      
     </div>
   </mat-card>
 
@@ -24,7 +15,7 @@
   <mat-card class="card" id="secondCard">
     <div class="usuario">
       <h1>{{ viaje.nameDriver }}</h1>
-      <ngb-rating ></ngb-rating>
+      <ngb-rating [max]="5" [(rate)]="rate" [readonly]="false"></ngb-rating>
     </div>
     <div id="icon">
       <mat-icon>account_circle</mat-icon>
@@ -35,28 +26,24 @@
 
   <mat-card class="card">
     <div class="coche">
-      <h2 class="brandCar">{{ viaje.brand_car }}</h2>
+      <h2 class="brandCar">{{ viaje.brand_car }} {{viaje.model_car}}</h2>
       <h2 class="colourCar">{{ viaje.colour_car }}</h2>
       <mat-icon>directions_car</mat-icon>
-      <h2 class="seatsCar">Asiento libres: {{ viaje.seats }}</h2>
+      <h2 class="seatsCar">Asiento libres: {{ asientosLibres }}</h2>
     </div>
   </mat-card>
 
   <div class="boton">
+    <button mat-raised-button class="unirseBoton" (click)="update()">
+      Editar Viaje
+    </button>
+  </div>
+
+
+  <div class="boton">
     <button mat-raised-button class="unirseBoton" (click)="unirse()">
-      Unirse/Gestionar
+      Unirse
     </button>
   </div>
 </div>
 
-<div class="footer">
-  <mat-toolbar>
-    <p>
-      Unicar es una organización que nace con el objetivo de<br />
-      reducir la huella de carbono de muchas persona <br />
-      que se dirijen a la universidad con el coche vacio y <br />
-      que nos les importaria compartirlo
-    </p>
-    <h2>UniCar</h2>
-  </mat-toolbar>
-</div>

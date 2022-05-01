@@ -28,8 +28,6 @@ export class ViajeComponent implements OnInit {
     this.viajeService.create(this.trip)
   }
 
-  
-
   newTrip(): void {
     this.submitted = false;
     this.trip = new Trip;

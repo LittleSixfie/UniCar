@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule } from '@angular/forms';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { provideFirestore,getFirestore,connectFirestoreEmulator  } from '@angular/fire/firestore';
@@ -16,7 +16,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from './components/user/create/create.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
+import { MatSelectModule } from '@angular/material/select'; 
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatCardModule } from '@angular/material/card'; 
 import { MatButtonModule } from '@angular/material/button';
@@ -68,6 +70,8 @@ import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
     AppRoutingModule,
     MatDividerModule,
     MatListModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

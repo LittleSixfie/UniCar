@@ -7,8 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
   constructor(private router: Router) { }
+
+  origin ="";
+  destiny =""
+  date = new Date();
+  numberOfPassengers = 1;
 
   ngOnInit(): void {
   }
@@ -21,6 +25,8 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/createViaje'])
   }
 
-  
+  search(){
+    console.log(this.origin,this.destiny,this.date,this.numberOfPassengers)
+  }  
 
 }

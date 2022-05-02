@@ -34,6 +34,8 @@ import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { SearchViajeComponent } from './search-viaje/search-viaje.component';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -49,10 +51,12 @@ import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
     ShowViajeComponent,
     HomePageComponent,
     UpdateViajeComponent,
+    SearchViajeComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,

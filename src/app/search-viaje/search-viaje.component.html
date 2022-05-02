@@ -1,0 +1,77 @@
+<div class="header">
+    <mat-toolbar>
+        
+        <img src="./assets/logo_unicar.png" width="100" height="70" />
+        <button mat-button color="primary">Mi perfil
+            <mat-icon matSuffix>person_outline</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
+
+<div class="buscar">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre Conductor</mat-label>
+            <input matInput        
+                    type="text"
+                    placeholder="Buscar"
+                    #name="ngModel"
+                    [(ngModel)]="searchParams.name" name="name">
+        </mat-form-field>
+    
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Origen</mat-label>
+            <input matInput        
+                    type="text"
+                    placeholder="Buscar"
+                    #origin="ngModel"
+                    [(ngModel)]="searchParams.origin" name="origin">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Destination</mat-label>
+            <input matInput        
+                    type="text"
+                    placeholder="Buscar"
+                    #destination="ngModel"
+                    [(ngModel)]="searchParams.destination" name="destination">
+        </mat-form-field>
+    </form> 
+    
+    <button (click)="onSearchTrip()" mat-raised-button color="primary">Buscar Viajes</button>
+
+</div>
+
+
+<section *ngIf="trips">
+    <table class="table table-striped">
+      
+      <div *ngIf="!isSearchEmpty; else noSearch">
+        <tbody>
+          <tr *ngFor="let trip of trips; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ trip.nameDriver }}</td>
+            <td>{{ trip.origin }}</td>
+            <td>{{ trip.destination }}</td>
+          </tr>
+        </tbody>
+      </div>
+    </table>
+
+    <ng-template #noSearch> Search result not found ! </ng-template>
+  </section>
+   
+
+<div class="footer">
+    <mat-toolbar>
+      <p>
+        Unicar es una organización que nace con el objetivo de<br />
+        reducir la huella de carbono de muchas persona <br />
+        que se dirijen a la universidad con el coche vacio y <br />
+        que nos les importaria compartirlo
+      </p>
+      <h2>UniCar</h2>
+    </mat-toolbar>
+  </div>
+

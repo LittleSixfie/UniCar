@@ -102,3 +102,8 @@
   .container{
       padding-bottom: 110px;
   }
+
+  .buttonText{
+    text-decoration: none;
+    color:white;
+  }

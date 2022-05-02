@@ -33,14 +33,14 @@ export class CreateComponent implements OnInit {
   }
 
   private registerUser(): boolean {
-    /*createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
+    createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
     
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-    });*/
+    });
     return true;
   }
 

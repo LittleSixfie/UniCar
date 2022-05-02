@@ -17,6 +17,7 @@ export class CrudUserService {
   userConverter = {
     toFirestore: (u: User) => {
       return {
+        id : u.id,
         userName : u.userName,
         userEmail : u.userEmail,
         userAge : u.userAge,
@@ -36,6 +37,7 @@ export class CrudUserService {
       const data = snapshot.data(options);
       let user: User = new User();
 
+      user.id = data.id;
       user.userName = data.userName;
       user.userEmail = data.userEmail;
       user.userAge = data.userAge;
@@ -68,8 +70,7 @@ export class CrudUserService {
     });
 
     user.id = aux
-    //FALTA EL UPDATE ~6d2
-    //this.update(aux, user) ~6d2
+    this.update(aux, JSON.parse(JSON.stringify(user)))
     this.router.navigate(["userRead/" + aux])
     return true;
   }

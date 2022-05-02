@@ -70,7 +70,7 @@ export class CrudUserService {
     });
 
     user.id = aux
-    this.update(aux, JSON.parse(JSON.stringify(user)))
+    this.update(aux, user);
     this.router.navigate(["userRead/" + aux])
     return true;
   }
@@ -87,9 +87,10 @@ export class CrudUserService {
   }
 
   public update(id: string, user: User): Boolean{
-    const userDocRef = doc(this.db, 'user/'+id);
+    const userDocRef = doc(this.db, 'users/'+id);
     //No funciona porque haceis una movida turboloca ~6d2
-    setDoc(userDocRef, user)
+    const userString = JSON.parse(JSON.stringify(user));
+    setDoc(userDocRef, userString);
     this.router.navigate(["userRead/" + id])
     return true;
   }

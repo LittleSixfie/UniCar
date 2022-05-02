@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { ShowViajeService } from 'src/app/services/show-viaje-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserTripsService } from 'src/app/services/user-trips.service';
 
 @Component({
   selector: 'app-read',
@@ -17,7 +18,7 @@ export class ReadComponent implements OnInit {
   userRequestedTrips?:string[];
 
   //userData = user desde auth
-  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
+  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService:UserTripsService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
     this.userData = new User();
     this.id = this.router.snapshot.params['id'];
   }
@@ -48,23 +49,6 @@ export class ReadComponent implements OnInit {
   }
 
   private getCreatedTrips(): void {
-    // Obtiene id de los trips
-    let a = JSON.stringify(this.userData?.createdTrips);
-    this.userCreatedTrips = Object.keys(JSON.parse(a));
-    console.log(this.userCreatedTrips);
-
-    // Obtiene información de los trips y towns
-    /* b.forEach((trip) => {
-      this.showViajeService.read(trip).then((response) => {
-        if(response.data() != undefined) {
-          let or = response.data().origin;
-          let or1 = JSON.stringify(or);
-          let or2 = Object.keys(JSON.parse(or1));
-          console.log(or2);
-          //console.log(response.data().origin);
-        }
-      })
-    }) */
-
+    this.userCreatedTrips = this.userTripsService.getCreatedTripsForUser(this.id); 
   }
 }

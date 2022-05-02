@@ -13,13 +13,15 @@
 
         <div class="viaje-uno">
             <form class="example-form">
+                <ng-container *ngIf="user.userName != undefined">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Nombre y Apellidos</mat-label>
-                    <input matInput type="text" [(ngModel)]="user.userName" [formControl]="inputControl">
-                    <mat-error>
-                        Enter a valid username
-                    </mat-error>
-                </mat-form-field>
+                        <input matInput type="text" [(ngModel)]="user.userName" [formControl]="inputControl">
+                        <mat-error>
+                            Enter a valid username
+                        </mat-error>
+                    </mat-form-field>
+                </ng-container>
             </form>
         </div>
 
@@ -60,14 +62,22 @@
             <h2>Mis viajes creados</h2>
 
             <mat-card class="viaje-uno">
-                <mat-card-title>Viaje 1</mat-card-title>
-                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                <mat-card-actions align="end">
-                    <button mat-raised-button class="primary-button" color="primary">
-                        <a class="buttonText" [routerLink]="['/updateViaje', id]">Editar</a>
-                    </button>
-                    <button mat-raised-button color="warn">Borrar</button>
-                </mat-card-actions>
+                <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
+                    <mat-list-item>
+                      <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                  </mat-action-list>
+                <!--
+                    <mat-card-title>Viaje 1</mat-card-title>
+                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                    <mat-card-actions align="end">
+                        <button mat-raised-button class="primary-button" color="primary">
+                            <a class="buttonText" [routerLink]="['/updateViaje', id]">Editar</a>
+                        </button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </mat-card-actions>
+                -->
             </mat-card>
         </div>
 

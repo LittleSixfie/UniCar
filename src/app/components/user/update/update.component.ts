@@ -8,6 +8,7 @@ import { DocumentReference } from 'firebase/firestore';
 import { DocumentData } from 'rxfire/firestore/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReadComponent } from '../read/read.component';
+import { UserTripsService } from 'src/app/services/user-trips.service';
 
 
 @Component({
@@ -17,32 +18,32 @@ import { ReadComponent } from '../read/read.component';
 })
 export class UpdateComponent implements OnInit {
   id: string;
-  userData?: User;
+  user: User;
   userCreatedTrips?: string[];
   userRequestedTrips?: string[];
-  readComponent: ReadComponent;
 
-  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private router: ActivatedRoute) {
-    this.userData = new User();
+  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
+    this.user = new User();
     this.id = this.router.snapshot.params['id'];
-    this.readComponent = new ReadComponent(crudUserService, showViajeService, router);
   }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   public inputControl: FormControl = new FormControl();
 
-  user: User = new User();
+  public getCreatedTrips(){    
+    this.userCreatedTrips = this.userTripsService.getCreatedTripsForUser(this.id); 
+  }
 
   ngOnInit(): void {
     this.inputControl = new FormControl();
   }
 
   onUpdate() {
-    this.crudUserService.update(this.router.snapshot.params['id'], this.user);
+    if (this.user != undefined) this.crudUserService.update(this.router.snapshot.params['id'], this.user);
   }
 
   public update(): void {
-    if (this.userData != undefined) this.crudUserService.update(this.id, this.userData);
+    if (this.user != undefined) this.crudUserService.update(this.id, this.user);
   }
 
 }

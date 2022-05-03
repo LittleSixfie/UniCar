@@ -5,20 +5,20 @@
     <h1 id="mision">Viaja a la universidad apoyando al medio ambiente</h1>
     <div id="searchbar">
       <mat-form-field appearance="outline">
-        <mat-label>Enter Origin</mat-label>
+        <mat-label>Entre Origen</mat-label>
         <input matInput #input maxlength="16" placeholder="Las Palmas" [(ngModel)]="origin"
         />
         <mat-hint align="end">{{ input.value?.length || 0 }}/16</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Enter Destiny</mat-label>
+        <mat-label>Entre Destino</mat-label>
         <input matInput #input maxlength="16" placeholder="Campus Tafira" [(ngModel)]="destiny"/>
         <mat-hint align="end">{{ input.value?.length || 0 }}/16</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Choose a date</mat-label>
+        <mat-label>Escoga fecha</mat-label>
         <input matInput [matDatepicker]="picker"/>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Enter Passengers</mat-label>
+        <mat-label>Nº de Pasajeros</mat-label>
         <select matNativeControl [(ngModel)]="numberOfPassengers" >
           <option value="1">1</option>
           <option value="2">2</option>

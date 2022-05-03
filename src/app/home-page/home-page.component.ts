@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
   }
 
   search(){
-    console.log(this.origin,this.destiny,this.date,this.numberOfPassengers)
+    this.router.navigate(['/search/' +this.origin + ","+this.destiny + "," + this.date+","+this.numberOfPassengers])
   }  
 
 }

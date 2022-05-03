@@ -34,7 +34,7 @@ export class ShowViajeComponent implements OnInit {
         return undefined;
       }
       this.viaje= response.data();
-      this.asientosLibres = response.data().seats - response.data().passenger.length
+     // this.asientosLibres = response.data().seats - response.data().passenger.length
       return true;
     })
     .catch((err) => {

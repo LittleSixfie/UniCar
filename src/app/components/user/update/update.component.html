@@ -3,8 +3,7 @@
 
         <h1><b>Datos Personales</b></h1>
         <mat-card class="viaje-uno">
-            <img mat-card-image class="profile-pic" src="./../../assets/profile_user.png"
-                alt="Profile picture">
+            <img mat-card-image class="profile-pic" src="./../../assets/profile_user.png" alt="Profile picture">
             <mat-card-actions align="end">
                 <button mat-raised-button class="primary-button" color="primary">Cambiar</button>
                 <button mat-raised-button color="warn">Borrar</button>
@@ -14,12 +13,9 @@
         <div class="viaje-uno">
             <form class="example-form">
                 <ng-container *ngIf="user.userName != undefined">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Nombre y Apellidos</mat-label>
-                        <input matInput type="text" [(ngModel)]="user.userName" [formControl]="inputControl">
-                        <mat-error>
-                            Enter a valid username
-                        </mat-error>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre y Apellidos</mat-label>
+                        <input matInput type="text" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}">
                     </mat-form-field>
                 </ng-container>
             </form>
@@ -29,45 +25,59 @@
             <form class="example-form">
                 <mat-form-field class="example-mid-width" appearance="fill">
                     <mat-label>Edad</mat-label>
-                    <input matInput type="number" [(ngModel)]="user.userAge" [formControl]="inputControl">
+                    <input matInput type="number" [(ngModel)]="user.userAge" [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Teléfono</mat-label>
                     <span matPrefix>+34 &nbsp;</span>
-                    <input type="tel" matInput [(ngModel)]="user.userTlf" [formControl]="inputControl">
+                    <input type="tel" matInput [(ngModel)]="user.userTlf" [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
             </form>
         </div>
 
         <div class="boton-uno">
-            <button (click) = "update()" class="primary-button" mat-raised-button color="primary">Actualizar Perfil</button>
+            <button (click)="update()" class="primary-button" mat-raised-button color="primary">Actualizar
+                Perfil</button>
         </div>
 
 
         <h1><b>Viajes</b></h1>
         <div class="viajes-fav">
             <h2>Mis viajes favoritos</h2>
-
-            <mat-card class="viaje-uno">
-                <mat-card-title>Viaje 1</mat-card-title>
-                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                <mat-card-actions align="end">
-                    <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
-                    <button mat-raised-button color="warn">Borrar</button>
-                </mat-card-actions>
-            </mat-card>
+            <mat-action-list role="list" *ngFor="let trip of userFavTrips">
+                <mat-card class="viaje-uno">
+                    <mat-card-title>{{trip}}</mat-card-title>
+                    <mat-card-actions align="end">
+                        <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button" color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-divider></mat-divider>
+            </mat-action-list>
+            <!--
+                <mat-card class="viaje-uno">
+                    <mat-card-title>Viaje 1</mat-card-title>
+                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                    <mat-card-actions align="end">
+                        <button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </mat-card-actions>
+                </mat-card>
+            -->
         </div>
 
         <div class="viajes-creados">
             <h2>Mis viajes creados</h2>
-
-            <mat-card class="viaje-uno">
                 <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
-                    <mat-list-item>
-                      <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
-                    </mat-list-item>
+                    <mat-card class="viaje-uno">
+                        <mat-card-title>{{trip}}</mat-card-title>
+                        <mat-card-actions align="end">
+                            <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button" color="primary">Editar</button>
+                            <button mat-raised-button color="warn">Borrar</button>
+                        </mat-card-actions>
+                    </mat-card>
                     <mat-divider></mat-divider>
-                  </mat-action-list>
+                </mat-action-list>
                 <!--
                     <mat-card-title>Viaje 1</mat-card-title>
                     <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
@@ -78,20 +88,30 @@
                         <button mat-raised-button color="warn">Borrar</button>
                     </mat-card-actions>
                 -->
-            </mat-card>
         </div>
 
         <div class="viajes-solicitados">
             <h2>Mis viajes solicitados</h2>
-
-            <mat-card class="viaje-uno">
-                <mat-card-title>Viaje 1</mat-card-title>
-                <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                <mat-card-actions align="end">
-                    <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
-                    <button mat-raised-button color="warn">Borrar</button>
-                </mat-card-actions>
-            </mat-card>
+            <mat-action-list role="list" *ngFor="let trip of userRequestedTrips">
+                <mat-card class="viaje-uno">
+                    <mat-card-title>{{trip}}</mat-card-title>
+                    <mat-card-actions align="end">
+                        <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button" color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </mat-card-actions>
+                </mat-card>
+                <mat-divider></mat-divider>
+            </mat-action-list>
+            <!--
+                <mat-card class="viaje-uno">
+                    <mat-card-title>Viaje 1</mat-card-title>
+                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
+                    <mat-card-actions align="end">
+                        <button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>
+                        <button mat-raised-button color="warn">Borrar</button>
+                    </mat-card-actions>
+                </mat-card>
+            -->
         </div>
     </div>
 

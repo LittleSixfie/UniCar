@@ -49,6 +49,14 @@ export class ReadComponent implements OnInit {
   }
 
   private getCreatedTrips(): void {
-    this.userCreatedTrips = this.userTripsService.getCreatedTripsForUser(this.id); 
+    let a = JSON.stringify(this.userData?.createdTrips);
+    this.userCreatedTrips = Object.keys(JSON.parse(a));
+    console.log(this.userCreatedTrips);
+    /**
+       this.userTripsService.getCreatedTripsForUser(this.id).then((datos) =>{
+         this.userCreatedTrips = datos;
+        console.log(this.userTripsService.viajesCreados);  
+      }); 
+     */
   }
 }

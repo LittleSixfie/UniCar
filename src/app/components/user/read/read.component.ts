@@ -14,8 +14,8 @@ import { UserTripsService } from 'src/app/services/user-trips.service';
 export class ReadComponent implements OnInit {
   id: string
   userData?: User;
-  userCreatedTrips?:string[];
-  userRequestedTrips?:string[];
+  userCreatedTrips?:Map<string,string>;
+  userRequestedTrips?:Map<string,string>;
 
   //userData = user desde auth
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService:UserTripsService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
@@ -42,13 +42,12 @@ export class ReadComponent implements OnInit {
     })
   }
 
-  private getRequestedTrips(): void {
-    let a = JSON.stringify(this.userData?.requestedTrips);
-    this.userRequestedTrips = Object.keys(JSON.parse(a));
-    console.log(this.userRequestedTrips);
+  private getCreatedTrips(): void {
+    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, 0);
   }
 
-  private getCreatedTrips(): void {
-    this.userCreatedTrips = this.userTripsService.getCreatedTripsForUser(this.id); 
+  private getRequestedTrips(): void {
+    this.userRequestedTrips = this.userTripsService.getTripsForUser(this.id, 1);
   }
+
 }

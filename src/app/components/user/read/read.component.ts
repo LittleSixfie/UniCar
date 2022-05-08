@@ -32,8 +32,8 @@ export class ReadComponent implements OnInit {
     datos.then((data) => {
       if(data != undefined) {
         this.userData = data;
-        this.getCreatedTrips();
-        this.getRequestedTrips();
+        this.userCreatedTrips = this.getUserTrips(0);
+        this.userRequestedTrips = this.getUserTrips(1);
       }
     })
     .catch((err) => {
@@ -42,12 +42,8 @@ export class ReadComponent implements OnInit {
     })
   }
 
-  private getCreatedTrips(): void {
-    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, 0);
-  }
-
-  private getRequestedTrips(): void {
-    this.userRequestedTrips = this.userTripsService.getTripsForUser(this.id, 1);
+  private getUserTrips(tripType: number): Map<string,string> {
+    return this.userTripsService.getTripsForUser(this.id, tripType);
   }
 
 }

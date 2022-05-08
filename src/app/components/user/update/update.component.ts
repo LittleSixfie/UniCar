@@ -23,7 +23,11 @@ export class UpdateComponent implements OnInit {
   userPicture?: File
   userCreatedTrips?: Map<string, string>;
   userRequestedTrips?: Map<string, string>;
+<<<<<<< HEAD
   userFavTrips?:Map<string,string>;
+=======
+  userFavTrips?: Map<string, string>;
+>>>>>>> 32cdfb1e06449956d9ac77bfe5a2c7b9e5092654
 
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
     this.user = new User();
@@ -35,6 +39,7 @@ export class UpdateComponent implements OnInit {
 
   public getUser(): void {
     const datos = this.crudUserService.read(this.id);
+<<<<<<< HEAD
     datos.then((data) => {
       if(data != undefined) {
         this.user = data;
@@ -85,11 +90,26 @@ export class UpdateComponent implements OnInit {
   public getFavTrips(){
     let favTrips = 2;
     this.userFavTrips = this.userTripsService.getTripsForUser(this.id, favTrips);
+=======
+    datos.then((datos) => {
+      this.user = datos;
+      this.userCreatedTrips = this.getUserTrips(0);
+      this.userRequestedTrips = this.getUserTrips(1);
+      this.userFavTrips = this.getUserTrips(2);
+    })
+  }
+  private getUserTrips(tripType: number): Map<string,string> {
+    return this.userTripsService.getTripsForUser(this.id, tripType);
+>>>>>>> 32cdfb1e06449956d9ac77bfe5a2c7b9e5092654
   }
 
   ngOnInit(): void {
     this.getUser();
     this.inputControl = new FormControl();
+<<<<<<< HEAD
+=======
+    this.getUser();
+>>>>>>> 32cdfb1e06449956d9ac77bfe5a2c7b9e5092654
   }
 
   onUpdate() {

@@ -28,8 +28,8 @@ export class UserTripsService {
       if (datos != undefined) {
         this.userData = datos;
       }
-    })
-    .then(() => {
+    });
+    data.then(() => {
       if (this.userData != undefined) {
         if(created_or_fav_or_requested == 0) {
           var a = JSON.stringify(this.userData.createdTrips);
@@ -49,6 +49,7 @@ export class UserTripsService {
           }
         })
       }
+      return viajesCreados;
     })
     .catch((err) => {
       console.log("Hubo un error inesperado: ", err);

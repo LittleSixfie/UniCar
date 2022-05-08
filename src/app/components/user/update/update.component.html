@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container">
     <div class="user-form">
 
@@ -45,11 +44,11 @@
         <h1><b>Viajes</b></h1>
         <div class="viajes-fav">
             <h2>Mis viajes favoritos</h2>
-            <mat-action-list role="list" *ngFor="let trip of userFavTrips">
+            <mat-action-list role="list" *ngFor="let trip of userFavTrips | keyvalue">
                 <mat-card class="viaje-uno">
-                    <mat-card-title>{{trip}}</mat-card-title>
+                    <mat-card-title>{{trip.value}}</mat-card-title>
                     <mat-card-actions align="end">
-                        <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button"
+                        <button [routerLink]="['/viaje', trip.key]" mat-raised-button class="primary-button"
                             color="primary">Editar</button>
                         <button mat-raised-button color="warn">Borrar</button>
                     </mat-card-actions>
@@ -70,11 +69,11 @@
 
         <div class="viajes-creados">
             <h2>Mis viajes creados</h2>
-            <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
+            <mat-action-list role="list" *ngFor="let trip of userCreatedTrips | keyvalue">
                 <mat-card class="viaje-uno">
-                    <mat-card-title>{{trip}}</mat-card-title>
+                    <mat-card-title>{{trip.value}}</mat-card-title>
                     <mat-card-actions align="end">
-                        <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button"
+                        <button [routerLink]="['/viaje', trip.key]" mat-raised-button class="primary-button"
                             color="primary">Editar</button>
                         <button mat-raised-button color="warn">Borrar</button>
                     </mat-card-actions>
@@ -95,11 +94,11 @@
 
         <div class="viajes-solicitados">
             <h2>Mis viajes solicitados</h2>
-            <mat-action-list role="list" *ngFor="let trip of userRequestedTrips">
+            <mat-action-list role="list" *ngFor="let trip of userRequestedTrips | keyvalue">
                 <mat-card class="viaje-uno">
-                    <mat-card-title>{{trip}}</mat-card-title>
+                    <mat-card-title>{{trip.value}}</mat-card-title>
                     <mat-card-actions align="end">
-                        <button [routerLink]="['/viaje', trip]" mat-raised-button class="primary-button"
+                        <button [routerLink]="['/viaje', trip.key]" mat-raised-button class="primary-button"
                             color="primary">Editar</button>
                         <button mat-raised-button color="warn">Borrar</button>
                     </mat-card-actions>
@@ -119,4 +118,3 @@
         </div>
     </div>
 </div>
-<app-footer></app-footer>

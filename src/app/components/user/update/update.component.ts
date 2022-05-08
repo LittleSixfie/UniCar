@@ -65,17 +65,10 @@ export class UpdateComponent implements OnInit {
   }
 
   private uploadPictures(){
-    /**
-      if(this.License !=  undefined){
-      const licenseRef = ref(this.storage, `${this.user.userEmail}/License/${this.user.userDriverLicense}`)
-      uploadBytes(licenseRef, this.License)
-      }
-    */
     if(this.userPicture != undefined){
       const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.userPicture)
     }
-    //this.License = undefined;
     this.userPicture = undefined;
   }
 
@@ -97,7 +90,6 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.inputControl = new FormControl();
-    this.getCreatedTrips();
   }
 
   onUpdate() {

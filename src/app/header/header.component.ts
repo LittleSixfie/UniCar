@@ -13,6 +13,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public vamoPalLogin() {
+    this.router.navigate(['/sesion'])
+  }
+
+  public vamoRegistrarme() {
+    this.router.navigate(['/userCreate'])
+  }
+
   public home(){
     this.router.navigate(['/home'])
   }

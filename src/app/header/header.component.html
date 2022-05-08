@@ -1,10 +1,9 @@
 <div class="header">
     <mat-toolbar>
-      <img (click)='home()' src="./../../assets/logo_unicar.png"/>
-      <button mat-button color="primary" id="profile">
-        Mi perfil
-        <mat-icon matSuffix>person_outline</mat-icon>
-      </button>
+      <img id="pic"(click)='home()' src="./../../assets/logo_unicar.png"/>
+      <button mat-button id="registrarse" (click)="vamoRegistrarme()">Registrarse</button>
+      <button mat-button id="login" (click)="vamoPalLogin()">Iniciar Sesion</button>
+    
       
     </mat-toolbar>
 </div>

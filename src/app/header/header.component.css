@@ -12,13 +12,17 @@
     margin-left: 550px;
 }
 .header button{
-    margin-left: 500px;
-    color: white
+    color: white;
+    
+}
+#pic:hover {
+    cursor: pointer;
 }
 .header img{
-    margin-left: 42%;
+    margin-left: 43%;
     width: 150px;
     height: 150px;
+
 }
 #icon{   
     padding-left: 5%;
@@ -28,7 +32,13 @@
     font-size:50px;
 }
 
-#profile{
+#login{
     background-color:#4DB6AC;
     border-radius: 5px;
+}
+#registrarse{
+    background-color:#4DB6AC;
+    border-radius: 5px;
+    margin-left: 20%;
+    margin-right: 1%;
 }

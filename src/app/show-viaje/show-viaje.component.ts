@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { Trip } from '../models/trips.model';
-import { Router, ActivatedRoute } from '@angular/router'; 
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-show-viaje',
   templateUrl: './show-viaje.component.html',
@@ -41,7 +41,7 @@ export class ShowViajeComponent implements OnInit {
       console.log(err)
       alert(err.message);
     })
-    
+
   }
 
   update():void{
@@ -50,7 +50,7 @@ export class ShowViajeComponent implements OnInit {
 
   unirse():void {
     if(this.asientosLibres > 0 ){
-      
+
     } else {
       alert("No hay espacio")
     }

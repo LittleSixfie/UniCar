@@ -17,13 +17,13 @@ import { getStorage, ref, uploadBytes } from 'firebase/storage'
 export class UpdateComponent implements OnInit {
   id: string;
   user: User;
-  userCreatedTrips?: string[];
-  userRequestedTrips?: string[];
-  userFavTrips?: string[];
 
   storage = getStorage()
   userLicense?: File
   userPicture?: File
+  userCreatedTrips?: Map<string, string>;
+  userRequestedTrips?: Map<string, string>;
+  userFavTrips?:Map<string,string>;
 
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
     this.user = new User();
@@ -47,26 +47,6 @@ export class UpdateComponent implements OnInit {
       console.log(err);
       alert("Se ha producido un error al recuperar los datos");
     })
-  }
-
-  public getCreatedTrips() {
-    /**
-     this.userTripsService.getCreatedTripsForUser(this.id).then((datos) =>{
-       this.userCreatedTrips = datos;
-     });     
-     */
-     let a = JSON.stringify(this.user?.createdTrips);
-     this.userCreatedTrips = Object.keys(JSON.parse(a));
-  }
-
-  public getRequestedTrips(){
-    let a = JSON.stringify(this.user?.requestedTrips);
-    this.userRequestedTrips = Object.keys(JSON.parse(a));
-  }
-
-  public getFavTrips(){
-    let a = JSON.stringify(this.user?.favTrips);
-    this.userFavTrips = Object.keys(JSON.parse(a));
   }
 
   public searchPicture(){
@@ -99,9 +79,25 @@ export class UpdateComponent implements OnInit {
     this.userPicture = undefined;
   }
 
+  public getCreatedTrips(){
+    let createdTrips = 0;
+    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, createdTrips);
+  }
+
+  public getRequestedTrips(){
+    let requiredTrips = 1;
+    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, requiredTrips);
+  }
+
+  public getFavTrips(){
+    let favTrips = 2;
+    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, favTrips);
+  }
+
   ngOnInit(): void {
     this.getUser();
     this.inputControl = new FormControl();
+    this.getCreatedTrips();
   }
 
   onUpdate() {

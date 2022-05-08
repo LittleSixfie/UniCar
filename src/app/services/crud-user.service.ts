@@ -62,6 +62,7 @@ export class CrudUserService {
 
   public async create(user: User): Promise<Boolean>{
     const res = collection(this.db, 'users')
+    console.log(JSON.parse(JSON.stringify(user)));
     const id=addDoc(res, JSON.parse(JSON.stringify(user)));
     let aux: string ="";
     await id.then(function(data){

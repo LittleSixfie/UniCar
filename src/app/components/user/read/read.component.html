@@ -25,9 +25,9 @@
         <p>Viajes Creados</p>
       </div>
       <mat-card class="matViajesCreados">
-        <mat-action-list role="list" *ngFor="let trip of userCreatedTrips">
+        <mat-action-list role="list" *ngFor="let trip of userCreatedTrips | keyvalue">
           <mat-list-item>
-            <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
+            <a [routerLink]="['/viaje', trip.key]">{{ trip.value }}</a>
           </mat-list-item>
           <mat-divider></mat-divider>
         </mat-action-list>
@@ -38,9 +38,9 @@
         <p>Viajes Solicitados</p>
       </div>
       <mat-card class="matViajesSolicitados">
-        <mat-action-list role="list" *ngFor="let trip of userRequestedTrips">
+        <mat-action-list role="list" *ngFor="let trip of userRequestedTrips | keyvalue">
           <mat-list-item>
-            <a [routerLink]="['/viaje', trip]">{{ trip }}</a>
+            <a [routerLink]="['/viaje', trip.key]">{{ trip.value }}</a>
           </mat-list-item>
           <mat-divider></mat-divider>
         </mat-action-list>

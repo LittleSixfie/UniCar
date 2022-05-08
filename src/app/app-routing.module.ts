@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:'updateViaje/:id', component: UpdateViajeComponent},
   {path:'userCreate', component: CreateComponent},
   {path:'userDelete/:id', component: DeleteComponent},
-  {path:'userRead/:id', component: ReadComponent},
+  {path:'perfil/:id', component: ReadComponent},
   {path:'userUpdate/:id', component: UpdateComponent},
   {path:'home', component: HomePageComponent},
   //{path:'registry', component:},

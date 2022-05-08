@@ -5,7 +5,7 @@
         <mat-card class="viaje-uno">
             <img mat-card-image class="profile-pic" src="./../../assets/profile_user.png" alt="Profile picture">
             <mat-card-actions align="end">
-                <button mat-raised-button class="primary-button" color="primary">Cambiar</button>
+                <button (click)="searchPicture()" mat-raised-button class="primary-button" color="primary">Cambiar</button>
                 <button mat-raised-button color="warn">Borrar</button>
             </mat-card-actions>
         </mat-card>
@@ -55,16 +55,6 @@
                 </mat-card>
                 <mat-divider></mat-divider>
             </mat-action-list>
-            <!--
-                <mat-card class="viaje-uno">
-                    <mat-card-title>Viaje 1</mat-card-title>
-                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                    <mat-card-actions align="end">
-                        <button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>
-                        <button mat-raised-button color="warn">Borrar</button>
-                    </mat-card-actions>
-                </mat-card>
-            -->
         </div>
 
         <div class="viajes-creados">
@@ -80,16 +70,6 @@
                 </mat-card>
                 <mat-divider></mat-divider>
             </mat-action-list>
-            <!--
-                    <mat-card-title>Viaje 1</mat-card-title>
-                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                    <mat-card-actions align="end">
-                        <button mat-raised-button class="primary-button" color="primary">
-                            <a class="buttonText" [routerLink]="['/updateViaje', id]">Editar</a>
-                        </button>
-                        <button mat-raised-button color="warn">Borrar</button>
-                    </mat-card-actions>
-                -->
         </div>
 
         <div class="viajes-solicitados">
@@ -105,16 +85,6 @@
                 </mat-card>
                 <mat-divider></mat-divider>
             </mat-action-list>
-            <!--
-                <mat-card class="viaje-uno">
-                    <mat-card-title>Viaje 1</mat-card-title>
-                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                    <mat-card-actions align="end">
-                        <button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>
-                        <button mat-raised-button color="warn">Borrar</button>
-                    </mat-card-actions>
-                </mat-card>
-            -->
         </div>
     </div>
 </div>

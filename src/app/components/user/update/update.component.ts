@@ -79,12 +79,12 @@ export class UpdateComponent implements OnInit {
 
   public getRequestedTrips(){
     let requiredTrips = 1;
-    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, requiredTrips);
+    this.userRequestedTrips = this.userTripsService.getTripsForUser(this.id, requiredTrips);
   }
 
   public getFavTrips(){
     let favTrips = 2;
-    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, favTrips);
+    this.userFavTrips = this.userTripsService.getTripsForUser(this.id, favTrips);
   }
 
   ngOnInit(): void {
@@ -97,7 +97,11 @@ export class UpdateComponent implements OnInit {
   }
 
   public update(): void {
-    if (this.user != undefined) this.crudUserService.update(this.id, this.user);
+    if (this.user != undefined){
+      this.uploadPictures();
+      this.crudUserService.update(this.id, this.user);
+    } 
+
   }
 
 }

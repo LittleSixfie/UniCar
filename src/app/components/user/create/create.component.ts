@@ -33,6 +33,8 @@ export class CreateComponent implements OnInit {
   }
 
   private registerUser(): boolean {
+    console.log(this.user)
+    if(this.user.userEmail == undefined || this.user.userPassword == undefined) return false
     createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
     

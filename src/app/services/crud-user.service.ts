@@ -87,7 +87,7 @@ export class CrudUserService {
   }
 
   public update(id: string, user: User): Boolean{
-    const userDocRef = doc(this.db, 'user/'+id);
+    const userDocRef = doc(this.db, 'users/'+id);
     //No funciona porque haceis una movida turboloca ~6d2
     setDoc(userDocRef, user)
     this.router.navigate(["userRead/" + id])
@@ -98,4 +98,19 @@ export class CrudUserService {
     return true;
   }
 
+
+  public async getUserByMail(user: User): Promise<User> {
+    const col = collection(this.db, this.dbPath);
+    console.log(user)
+    const q = query(col, where("userEmail", "==", user.userEmail));
+    
+    const querySnapshot = await getDocs(q);
+    var user = new User();
+    
+    querySnapshot.forEach((doc) => {
+      console.log(user)
+        user = doc.data();
+    });
+    return user;
+  }
 }

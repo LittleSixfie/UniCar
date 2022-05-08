@@ -48,12 +48,13 @@
       <h2>Mis viajes favoritos</h2>
 
       <mat-card class="viaje-uno">
-        <mat-card-title>Viaje 1</mat-card-title>
-        <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-        <mat-card-actions align="end">
-          <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
-          <button mat-raised-button color="warn">Borrar</button>
-        </mat-card-actions>
+        <mat-action-list role="list" *ngFor="let trip of userFavTrips | keyvalue">
+
+          <mat-list-item>
+            <a [routerLink]="['/viaje', trip.key]">{{ trip.value }}</a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-action-list>
       </mat-card>
     </div>
 
@@ -67,16 +68,6 @@
           </mat-list-item>
           <mat-divider></mat-divider>
         </mat-action-list>
-        <!--
-                    <mat-card-title>Viaje 1</mat-card-title>
-                    <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-                    <mat-card-actions align="end">
-                        <button mat-raised-button class="primary-button" color="primary">
-                            <a class="buttonText" [routerLink]="['/updateViaje', id]">Editar</a>
-                        </button>
-                        <button mat-raised-button color="warn">Borrar</button>
-                    </mat-card-actions>
-                -->
       </mat-card>
     </div>
 
@@ -84,34 +75,13 @@
       <h2>Mis viajes solicitados</h2>
 
       <mat-card class="viaje-uno">
-        <mat-card-title>Viaje 1</mat-card-title>
-        <mat-card-subtitle>Origen:______ Destino:_______</mat-card-subtitle>
-        <mat-card-actions align="end">
-          <!--<button (click) = "updateTrip()" mat-raised-button class="primary-button" color="primary">Editar</button>-->
-          <button mat-raised-button color="warn">Borrar</button>
-        </mat-card-actions>
+        <mat-action-list role="list" *ngFor="let trip of userRequestedTrips | keyvalue">
+          <mat-list-item>
+            <a [routerLink]="['/viaje', trip.key]">{{ trip.value }}</a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-action-list>
       </mat-card>
     </div>
   </div>
-
-
-  <!--
-            <tr>
-                <td>
-                    <mat-radio-group aria-label="driver">
-                        <mat-label>¿Eres conductor?</mat-label> <br>
-                        <mat-radio-button value="Yes">Si </mat-radio-button>
-                        <mat-radio-button value="No">No</mat-radio-button>
-                    </mat-radio-group>
-                </td>
-                    Foto de carné de conducir
-                <td>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Carné de conducir</mat-label>
-                    </mat-form-field>
-                </td>
-            </tr>
-        -->
-
 </div>
-<app-footer></app-footer>

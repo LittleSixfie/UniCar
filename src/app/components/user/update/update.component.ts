@@ -21,6 +21,7 @@ export class UpdateComponent implements OnInit {
   user: User;
   userCreatedTrips?: Map<string, string>;
   userRequestedTrips?: Map<string, string>;
+  userFavTrips?: Map<string, string>;
 
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
     this.user = new User();
@@ -30,19 +31,22 @@ export class UpdateComponent implements OnInit {
 
   public inputControl: FormControl = new FormControl();
 
-  public getCreatedTrips(){
-    let createdTrips = 0;
-    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, createdTrips);
+  public getUser(): void {
+    const datos = this.crudUserService.read(this.id);
+    datos.then((datos) => {
+      this.user = datos;
+      this.userCreatedTrips = this.getUserTrips(0);
+      this.userRequestedTrips = this.getUserTrips(1);
+      this.userFavTrips = this.getUserTrips(2);
+    })
   }
-
-  public getRequiredTrips(){
-    let requiredTrips = 1;
-    this.userCreatedTrips = this.userTripsService.getTripsForUser(this.id, requiredTrips);
+  private getUserTrips(tripType: number): Map<string,string> {
+    return this.userTripsService.getTripsForUser(this.id, tripType);
   }
 
   ngOnInit(): void {
     this.inputControl = new FormControl();
-    this.getCreatedTrips();
+    this.getUser();
   }
 
   onUpdate() {

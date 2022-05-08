@@ -21,20 +21,22 @@ export class UserTripsService {
   }
 
   // created_or_fav => Variable para buscar los viajes creados o los favoritos, vale 0 o 1 respectivamente
-  public getTripsForUser(id: string, created_or_fav: number): Map<string, string> {
+  public getTripsForUser(id: string, created_or_fav_or_requested: number): Map<string, string> {
     var viajesCreados: Map<string, string> = new Map<string, string>();
     const data = this.crudUserService.read(id);
     data.then((datos) => {
       if (datos != undefined) {
         this.userData = datos;
       }
-    })
-    .then(() => {
+    });
+    data.then(() => {
       if (this.userData != undefined) {
-        if(created_or_fav == 0) {
+        if(created_or_fav_or_requested == 0) {
           var a = JSON.stringify(this.userData.createdTrips);
-        } else {
+        } else if(created_or_fav_or_requested == 1){
           var a = JSON.stringify(this.userData.requestedTrips);
+        } else {
+          var a = JSON.stringify(this.userData.favTrips);
         }
         var userCreatedTrips = Object.keys(JSON.parse(a));
         userCreatedTrips.forEach((trip) => {
@@ -47,6 +49,7 @@ export class UserTripsService {
           }
         })
       }
+      return viajesCreados;
     })
     .catch((err) => {
       console.log("Hubo un error inesperado: ", err);

@@ -43,7 +43,7 @@ export class UserTripsService {
           if (trip != undefined) {
             const viaje = this.showViajeService.read(trip).then((response) => {
               if (response.data() != undefined) {
-                viajesCreados.set(response.id, response.data().origen + " - " + response.data().destino);
+                viajesCreados.set(response.id, response.data().origin + " - " + response.data().destination);
               }
             });
           }

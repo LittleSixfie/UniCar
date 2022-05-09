@@ -81,10 +81,6 @@ export class UpdateComponent implements OnInit {
     this.inputControl = new FormControl();
   }
 
-  onUpdate() {
-    if (this.user != undefined) this.crudUserService.update(this.router.snapshot.params['id'], this.user);
-  }
-
   public update(): void {
     if (this.user != undefined){
       this.uploadPictures();

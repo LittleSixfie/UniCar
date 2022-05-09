@@ -51,7 +51,7 @@ export class ShowViajeComponent implements OnInit {
 
   unirse():void {
     if(this.asientosLibres > 0 ){
-      this.crudUserService.addToTrip(this.router.snapshot.params['id']);
+      this.crudUserService.addToTrip(this.router.snapshot.params['id'], 'requestedTrips');
     } else {
       alert("No hay espacio")
     }

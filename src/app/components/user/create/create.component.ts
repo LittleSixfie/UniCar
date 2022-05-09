@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword } from '@firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, Auth, User as UserAuth } from '@firebase/auth';
 import { User } from 'src/app/models/user';
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { Router } from '@angular/router';
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
-import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -19,31 +18,38 @@ export class CreateComponent implements OnInit {
   hide = true;
   License?: File;
   Picture?: File;
-  uid;
-  auth;
+  auth: Auth | null = null;
+  userAuth: UserAuth | null = null;
   storage = getStorage();
 
-  constructor(private crudUserService: CrudUserService, private router:Router, private AuthService: AuthService) {
-    this.uid = this.AuthService.getCurrentUser();
-    this.auth = this.AuthService.getAuth();
+  constructor(private crudUserService: CrudUserService, private router:Router) {
+    //this.auth = getAuth();
+    //this.userAuth = this.auth.currentUser;
   }
 
   ngOnInit(): void {}
 
   saveUser(): void {
-    if(this.registerUser()){
+    this.auth = getAuth();
+    this.userAuth = this.auth.currentUser;
+    var a = this.registerUser();
+    console.log(a);
+    if(a){
       //this.uploadPictures()
       //this.crudUserService.create(this.user)
-      this.router.navigate(["/perfil/" + this.uid]);
+      console.log(this.userAuth);
+      if(this.userAuth !== null) this.router.navigate(["/perfil/" + this.userAuth.uid]);
     }
   }
 
   private registerUser(): boolean {
+    this.auth = getAuth();
     createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
+      console.log("Registrandome, uid: ", userCredentials.user.uid);
       this.uploadPictures()
       //this.router.navigate(["/perfil/" + userCredentials.user.uid]);
-      return this.crudUserService.create(this.user, userCredentials.user.uid);
+      this.crudUserService.create(this.user);
     })
     .catch((error) => {
       const errorCode = error.code;

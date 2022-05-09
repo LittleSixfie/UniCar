@@ -55,5 +55,9 @@ export class ShowViajeComponent implements OnInit {
       alert("No hay espacio")
     }
   }
+
+  managePassenger():void{
+    this.auxRouter.navigate(["managePassenger/"+this.router.snapshot.params['id']]);
+  }
   ngOnInit(): void {};
 }

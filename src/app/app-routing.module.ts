@@ -9,6 +9,7 @@ import { ReadComponent } from './components/user/read/read.component';
 import { UpdateComponent } from './components/user/update/update.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { ManagePassengersComponent } from './manage-passengers/manage-passengers.component';
 
 const routes: Routes = [
   { path: 'viaje/:id', component: ShowViajeComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   //{path:'sesion', component:},
   //{path:'puntuaviaje', component:},
   //{path:'puntuaCompañeros', component:},
-  //{path:'politicaDatos', component:},
+  {path:'managePassenger/:id', component: ManagePassengersComponent},
   { path: '**', component: HomePageComponent },
   //{path:'search, component:},
 ];

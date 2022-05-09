@@ -1,0 +1,11 @@
+<mat-list id="todas">
+    <mat-list-item  role="listitem" *ngFor="let passenger of passengers">
+      <div id="atributos">
+        <div id="attribute" >{{ passenger }}</div>
+      </div>
+      <div id="botones" >
+        <button class="boton" mat-raised-button color="accent" (click)="deleteArr(passenger)">Delete</button>
+      </div>
+      <button class="boton" mat-raised-button color="accent" (click)="delete()">Guardar cambios</button>
+    </mat-list-item>
+  </mat-list>

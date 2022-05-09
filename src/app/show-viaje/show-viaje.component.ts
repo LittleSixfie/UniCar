@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { Trip } from '../models/trips.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CrudUserService } from '../services/crud-user.service';
 @Component({
   selector: 'app-show-viaje',
   templateUrl: './show-viaje.component.html',
@@ -25,7 +26,7 @@ export class ShowViajeComponent implements OnInit {
   rate = 2.5;
   asientosLibres:number =0;
 
-  constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router ) {
+  constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router, private crudUserService: CrudUserService ) {
     const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
     viajes.then((response) => {
       console.log(response.data());
@@ -50,7 +51,7 @@ export class ShowViajeComponent implements OnInit {
 
   unirse():void {
     if(this.asientosLibres > 0 ){
-
+      this.crudUserService.addToTrip(this.router.snapshot.params['id']);
     } else {
       alert("No hay espacio")
     }

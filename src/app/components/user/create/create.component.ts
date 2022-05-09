@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { Router } from '@angular/router';
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -16,32 +17,40 @@ export class CreateComponent implements OnInit {
   user: User = new User();
   submitted = false;
   hide = true;
-  License?: File
-  Picture?: File
-  auth = getAuth()
-  storage = getStorage()
+  License?: File;
+  Picture?: File;
+  uid;
+  auth;
+  storage = getStorage();
 
-  constructor(private crudUserService: CrudUserService, private router:Router) {}
+  constructor(private crudUserService: CrudUserService, private router:Router, private AuthService: AuthService) {
+    this.uid = this.AuthService.getCurrentUser();
+    this.auth = this.AuthService.getAuth();
+  }
 
   ngOnInit(): void {}
 
   saveUser(): void {
     if(this.registerUser()){
-      this.uploadPictures()
-      this.crudUserService.create(this.user)
+      //this.uploadPictures()
+      //this.crudUserService.create(this.user)
+      this.router.navigate(["/perfil/" + this.uid]);
     }
   }
 
   private registerUser(): boolean {
     createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
-    
+      this.uploadPictures()
+      //this.router.navigate(["/perfil/" + userCredentials.user.uid]);
+      return this.crudUserService.create(this.user, userCredentials.user.uid);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
     return true;
+
   }
 
   public searchLicense() {

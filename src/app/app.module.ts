@@ -17,10 +17,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from './components/user/create/create.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
-import { MatIconModule } from '@angular/material/icon'; 
-import { MatCardModule } from '@angular/material/card'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';  
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -32,6 +32,8 @@ import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { getAuth, AuthProvider } from '@firebase/auth';
+import { provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,

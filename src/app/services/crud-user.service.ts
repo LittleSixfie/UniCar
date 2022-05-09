@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, where, query, getDocs } from '@angular/fire/firestore';
 import { User } from '../models/user';
-import { addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { addDoc, doc, DocumentReference, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Data, Router } from '@angular/router';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,9 @@ export class CrudUserService {
   userRef;
   dbPath: string = "users";
   userData!: User;
+  //auth;
+  //user;
+
   // Converter para escribir en la base de datos o leer
   userConverter = {
     toFirestore: (u: User) => {
@@ -58,22 +63,32 @@ export class CrudUserService {
   constructor(db: Firestore, private router:Router) {
     this.db = db;
     this.userRef = collection(this.db, this.dbPath).withConverter(this.userConverter);
+    /* this.auth = getAuth();
+    this.user = this.auth.currentUser;
+    console.log("usuario: ", "=>", this.user); */
+    // No entra aquí, el getAuth() puede que no llegue a tiempo o que está creando una instacia nueva y por eso user es null
   }
 
-  public async create(user: User): Promise<Boolean>{
+  public async create(user: User, uid: string): Promise<Boolean>{
     const res = collection(this.db, 'users')
-    console.log(JSON.parse(JSON.stringify(user)));
-    const id=addDoc(res, JSON.parse(JSON.stringify(user)));
-    let aux: string ="";
-    await id.then(function(data){
-      aux=data.id
-      return data.id
-    });
-
-    user.id = aux
-    this.update(aux, user);
-    this.router.navigate(["userRead/" + aux])
+    //console.log(JSON.parse(JSON.stringify(user)));
+    const uData =  JSON.parse(JSON.stringify(user));
+    //const id=addDoc(res, JSON.parse(JSON.stringify(user)));
+    //console.log("this.user: ", this.user);
+    const id = await setDoc(doc(this.db, 'users', uid), uData);
+    console.log("setDoc: ", id);
+/*       let aux: string ="";
+      await id.then(function(data){
+        aux=data.id;
+        return data.id;
+        user.id = aux
+      }); */
+      //this.update(aux, user);
+      //this.update(this.user.uid, user);
+      //this.router.navigate(["userRead/" + aux])
+      //this.router.navigate(["perfil/" + this.user.uid]);
     return true;
+
   }
 
   public async read(id: string): Promise<User>{
@@ -100,4 +115,15 @@ export class CrudUserService {
     return true;
   }
 
+  public async addToTrip(trip_id: string): Promise<any> {
+    if(this.user !== null) {
+      const uid = this.user.uid;
+      const userRef = doc(this.db, 'users', uid);
+      const tripRef = doc(this.db, 'trips', trip_id);
+      await updateDoc(userRef, {requestedTrips: tripRef});
+    } else {
+      console.log("Tienes que estar conectado para añadirte a un viaje");
+    }
+
+  }
 }

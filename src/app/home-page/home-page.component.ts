@@ -4,23 +4,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
+  origin = '';
+  destiny = '';
+  date = new Date();
+  numberOfPassengers = 1;
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  public openSesion() {
+    this.router.navigate(['/registrarse']);
   }
 
-  public openSesion(){
-    this.router.navigate(['/userCreate'])
+  public openTrips() {
+    this.router.navigate(['/crearViaje']);
   }
 
-  public openTrips(){
-    this.router.navigate(['/createViaje'])
+  search() {
+    this.router.navigate([
+      '/search/' +
+        this.origin +
+        ';' +
+        this.destiny +
+        ';' +
+        this.date +
+        ';' +
+        this.numberOfPassengers,
+    ]);
   }
-
-  
-
 }

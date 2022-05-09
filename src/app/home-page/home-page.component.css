@@ -13,3 +13,65 @@
     background-color:#009688;
     color: white;
 }
+
+#mision{
+    color:white;
+    text-align: center;
+    
+}
+
+#search{
+    height: 600px;
+    background-image: url(../../assets/imagenfondo.png);
+    
+    padding-top:3% ;
+}
+
+#searchbar{
+    background-color: white;
+    border-radius: 10px;
+    border-color: #009688;
+    border-width: 2px;
+    border-style: solid;
+    margin:15%;
+    padding:15px;
+    padding-bottom: 3px ;
+}
+
+#searchbar > mat-form-field{ 
+    width: 20%;
+    margin-right:20px;
+}
+#searchbar > button{ 
+    width: 10%;
+    background-color:#009688;
+    color: white;
+    
+}
+
+#info{
+    display: flex;
+    margin-bottom: 100px;
+}
+#dialogo{
+    width: 30%;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+#nube{
+    width: 30%;
+    margin-right:3%
+}
+#coches{
+    width: 30%;
+}
+
+#dialogo > h2{
+    margin-top:-125px;
+}
+#nube > h2{
+    margin-top:-125px;
+}
+#coches > h2{
+    margin-top:-125px;
+}

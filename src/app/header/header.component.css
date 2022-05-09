@@ -19,12 +19,18 @@
   align-items: center;
   justify-content: center;
 }
-.logo:hover {
-  cursor: pointer;
+.header button{
+    color: white;
+    
 }
-.logo img{
-  width: 150px;
-  height: 150px;
+#pic:hover {
+    cursor: pointer;
+}
+.header img{
+    margin-left: 43%;
+    width: 150px;
+    height: 150px;
+
 }
 
 #button{
@@ -42,7 +48,17 @@
   padding-left: 5%;
 }
 #icon > mat-icon{
-  margin:auto;
-  font-size:50px;
+    margin:auto;
+    font-size:50px;
 }
 
+#login{
+    background-color:#4DB6AC;
+    border-radius: 5px;
+}
+#registrarse{
+    background-color:#4DB6AC;
+    border-radius: 5px;
+    margin-left: 20%;
+    margin-right: 1%;
+}

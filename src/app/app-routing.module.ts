@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'userRead/:id', component: ReadComponent},
   {path:'userUpdate/:id', component: UpdateComponent},
   {path:'home', component: HomePageComponent},
-  {path:'search', component: SearchViajeComponent},
+  {path:'search/:id', component: SearchViajeComponent},
   //{path:'registry', component:},
   //{path:'sesion', component:},
   //{path:'puntuaviaje', component:},

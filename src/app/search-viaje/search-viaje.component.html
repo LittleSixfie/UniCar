@@ -1,55 +1,71 @@
-<div class="buscar">
-    <form>
-        <mat-form-field appearance="fill">
-            <mat-label>Nombre Conductor</mat-label>
-            <input matInput        
-                    type="text"
-                    placeholder="Buscar"
-                    #name="ngModel"
-                    [(ngModel)]="searchParams.name" name="name">
-        </mat-form-field>
-    
-    
-        <mat-form-field appearance="fill">
-            <mat-label>Origen</mat-label>
-            <input matInput        
-                    type="text"
-                    placeholder="Buscar"
-                    #origin="ngModel"
-                    [(ngModel)]="searchParams.origin" name="origin">
-        </mat-form-field>
-    
-        <mat-form-field appearance="fill">
-            <mat-label>Destination</mat-label>
-            <input matInput        
-                    type="text"
-                    placeholder="Buscar"
-                    #destination="ngModel"
-                    [(ngModel)]="searchParams.destination" name="destination">
-        </mat-form-field>
-    </form> 
-    
-    <button (click)="onSearchTrip()" mat-raised-button color="primary">Buscar Viajes</button>
-
-</div>
-
-
 <section *ngIf="trips">
-    <table class="table table-striped">
+
+  <div id="searchbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Entre Origen</mat-label>
+      <input matInput #input maxlength="16" placeholder="Las Palmas" [(ngModel)]="origin"
+      />
+      <mat-hint align="end">{{ input.value?.length || 0 }}/16</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Entre Destino</mat-label>
+      <input matInput #input maxlength="16" placeholder="Campus Tafira" [(ngModel)]="destiny"/>
+      <mat-hint align="end">{{ input.value?.length || 0 }}/16</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Escoga fecha</mat-label>
+      <input matInput [(ngModel)]="date"/>
       
-      <div *ngIf="!isSearchEmpty; else noSearch">
-        <tbody>
-          <tr *ngFor="let trip of trips; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ trip.nameDriver }}</td>
-            <td>{{ trip.origin }}</td>
-            <td>{{ trip.destination }}</td>
-          </tr>
-        </tbody>
-      </div>
-    </table>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nº de Pasajeros</mat-label>
+      <select matNativeControl [(ngModel)]="numberOfPassengers" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </mat-form-field>
+
+    
+  </div>
+  <div *ngFor="let trip of trips; index as i" id="viajes">
+    
+    <div>
+      <mat-icon>account_circle</mat-icon>
+      <h1>{{ trip.nameDriver }}</h1>
+    </div>
+      <mat-icon>directions_car</mat-icon>
+      <h1>{{ trip.model_car }} {{ trip.brand_car }}</h1>
+      
+    <div>
+    <h1>{{ trip.date }} {{ trip.hour }}</h1>
+
+    </div>
+    <h1>{{ trip.origin }}</h1>
+    <div>
+      <mat-icon>arrow_downward</mat-icon>
+    </div>
+    <div>
+      <h1>{{ trip.destination }} &nbsp;</h1>
+    </div>
+   
+    <h1> {{ trip.seats }} plazas disponibles</h1>
+    
+    
+     
+        
+        
+        
+
+     
+  </div>
+      
 
     <ng-template #noSearch> Search result not found ! </ng-template>
-  </section>
+</section>
    
 

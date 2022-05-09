@@ -36,6 +36,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
 import { SearchViajeComponent } from './search-viaje/search-viaje.component';
 import { AngularFireModule } from '@angular/fire/compat';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     HomePageComponent,
     UpdateViajeComponent,
     SearchViajeComponent,
+    HomePageComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -76,8 +79,9 @@ import { AngularFireModule } from '@angular/fire/compat';
     MatListModule,
     MatNativeDateModule,
     MatSelectModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

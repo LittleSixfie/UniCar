@@ -1,7 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute } from '@angular/router';
 import { collection, query } from 'firebase/firestore';
 import { combineLatest, map } from 'rxjs';
+import { HomePageComponent } from '../home-page/home-page.component';
 import { Trip } from '../models/trips.model';
 import { SearchService } from '../services/search.service';
 
@@ -12,22 +15,45 @@ import { SearchService } from '../services/search.service';
 })
 export class SearchViajeComponent implements OnInit {
 
-  trips: Trip[] = [];
-  isSearchEmpty: boolean | undefined;
+  trips: Trip[] = []
+  isSearchEmpty: boolean | undefined
+  date: string | null = ""
+  aux: string = ""
+  ruta: string[] = []
+  origin: string = ""
+  destiny: string = ""
+  numberOfPassengers: number = 0
   searchParams = {
     name: "",
     origin: "",
     destination: "",
   };
  
-  constructor(private afsCompact: AngularFirestore, private search: SearchService) { 
-    
+  constructor(private afsCompact: AngularFirestore, private search: SearchService,private router :ActivatedRoute,private home: HomePageComponent,
+    public datepipe: DatePipe) { 
+      //console.log(this.router.snapshot.params['id'])
+      this.aux = this.router.snapshot.params['id']
+      this.ruta = this.aux.split(";")
+      console.log(this.ruta[2])
+      this.date = this.datepipe.transform(this.ruta[2],'d/MM/yyyy')
+      this.origin = this.ruta[0]
+      this.destiny = this.ruta[1]
+      this.numberOfPassengers = Number(this.ruta[3])
+      console.log(this.date)
+      //const viajes = this.search.search('Telde','Tafira',3,'23/04/2022')
+      
+      const viajes = this.search.search(this.origin,this.destiny,this.numberOfPassengers,this.date)
+      viajes.then((response) => {
+        this.trips = response;
+      })
+      console.log(this.trips)
     
   }
 
   onSearchTrip() {
-
-    const viajes = this.search.search(this.searchParams.name,this.searchParams.origin,this.searchParams.destination)
+    this.date = this.datepipe.transform(this.home.date,'dd-mm-yyyy')
+    const viajes = this.search.search(this.home.origin,this.home.destiny,this.home.numberOfPassengers,this.date)
+    
     viajes.then((response) => {
       this.trips = response;
     })

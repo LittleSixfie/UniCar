@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 import { collection, DocumentData, getDocs, query, QuerySnapshot, where } from 'firebase/firestore';
 import { Trip } from '../models/trips.model';
 
@@ -15,10 +16,14 @@ export class SearchService {
     this.db = db;
   }
 
-  async search(name: string, origin: string, destination: string): Promise<Trip[]>{
-    const q = query(collection(this.db,"trips"),where("nameDriver","==",name),where("origin","==",origin),
-                      where("destination","==",destination))
+  async search(origin: string, destination: string,numberOfPassengers: number, date: string | null): Promise<Trip[]>{
+    //const q = query(collection(this.db,"trips"),where("origin","==",origin),where("destination","==",destination),
+                     // where("seats","==",numberOfPassengers),where("date","==",date))
+    
+    const q = query(collection(this.db,"trips"),where("origin", "==", origin),where("destination","==",destination),
+                    where("date","==",date))                 
     const querySnapshot = await getDocs(q);
+
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());

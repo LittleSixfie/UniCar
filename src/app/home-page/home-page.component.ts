@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-home-page',
@@ -9,8 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
   constructor(private router: Router) { }
 
-  origin ="";
-  destiny =""
+  public origin =""
+  public destiny =""
   date = new Date();
   numberOfPassengers = 1;
 
@@ -26,7 +31,14 @@ export class HomePageComponent implements OnInit {
   }
 
   search(){
-    this.router.navigate(['/search/' +this.origin + ","+this.destiny + "," + this.date+","+this.numberOfPassengers])
+    this.router.navigate(['/search/'+this.origin +
+    ';' +
+    this.destiny +
+    ';' +
+    this.date +
+    ';' +
+    this.numberOfPassengers,])
+    //this.router.navigate(['/createViaje'])
   }  
 
 }

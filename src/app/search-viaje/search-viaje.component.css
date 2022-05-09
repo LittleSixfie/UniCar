@@ -68,3 +68,41 @@
 .buscar .mat-form-field{
     width: 250px;
 }
+
+#searchbar{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #009688;
+    border-width: 2px;
+    border-style: solid;
+    margin:5%;
+    padding:10px;
+    padding-bottom: 3px ;
+}
+
+#searchbar > mat-form-field{ 
+    width: 20%;
+    margin-right:20px;
+}
+#searchbar > button{ 
+    width: 10%;
+    background-color:#009688;
+    color: white;
+    
+}
+
+#viajes{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #009688;
+    border-width: 2px;
+    border-style: solid;
+    margin:10%;
+    padding:10px;
+    padding-bottom: 20px ;
+    
+}
+
+section {
+    padding-bottom: 100px;
+}

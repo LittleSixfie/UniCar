@@ -4,24 +4,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public vamoPalLogin() {
-    this.router.navigate(['/sesion'])
+    this.router.navigate(['/sesion']);
   }
 
   public vamoRegistrarme() {
-    this.router.navigate(['/userCreate'])
+    this.router.navigate(['/registrarse']);
   }
 
-  public home(){
-    this.router.navigate(['/home'])
+  public home() {
+    this.router.navigate(['/home']);
   }
 }

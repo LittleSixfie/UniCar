@@ -5,6 +5,8 @@ import { CrudUserService } from 'src/app/services/crud-user.service';
 import { ShowViajeService } from 'src/app/services/show-viaje-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserTripsService } from 'src/app/services/user-trips.service';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+
 
 @Component({
   selector: 'app-read',
@@ -13,9 +15,12 @@ import { UserTripsService } from 'src/app/services/user-trips.service';
 })
 export class ReadComponent implements OnInit {
   id: string
-  userData?: User;
+  userData: User;
   userCreatedTrips?:Map<string,string>;
   userRequestedTrips?:Map<string,string>;
+
+  storage = getStorage()
+  userProfilePic?:string;
 
   //userData = user desde auth
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService:UserTripsService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
@@ -27,6 +32,14 @@ export class ReadComponent implements OnInit {
     this.read();
   }
 
+  private getProfilePic() {
+    const pictureRef = ref(this.storage, `${this.userData.userEmail}/Picture/${this.userData.userPic}`);
+    const picture = getDownloadURL(pictureRef);
+    picture.then((url) => {
+      this.userProfilePic = url;
+    });
+  }
+
   public read(): void {
     const datos = this.crudUserService.read(this.id);
     datos.then((data) => {
@@ -34,6 +47,7 @@ export class ReadComponent implements OnInit {
         this.userData = data;
         this.userCreatedTrips = this.getUserTrips(0);
         this.userRequestedTrips = this.getUserTrips(1);
+        this.getProfilePic();
       }
     })
     .catch((err) => {

@@ -72,7 +72,7 @@ export class CrudUserService {
 
     user.id = aux
     this.update(aux, user);
-    this.router.navigate(["userRead/" + aux])
+    this.router.navigate(["perfil/" + aux]);
     return true;
   }
 
@@ -92,7 +92,7 @@ export class CrudUserService {
     //No funciona porque haceis una movida turboloca ~6d2
     const userString = JSON.parse(JSON.stringify(user));
     setDoc(userDocRef, userString);
-    this.router.navigate(["userRead/" + id])
+    this.router.navigate(["perfil/" + id])
     return true;
   }
 

@@ -5,7 +5,7 @@ import { CrudUserService } from 'src/app/services/crud-user.service';
 import { ShowViajeService } from 'src/app/services/show-viaje-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserTripsService } from 'src/app/services/user-trips.service';
-import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 
 
@@ -21,11 +21,12 @@ export class UpdateComponent implements OnInit {
   storage = getStorage()
   userLicense?: File
   userPicture?: File
+  userPicUrl?: string
   userCreatedTrips?: Map<string, string>;
   userRequestedTrips?: Map<string, string>;
-  userFavTrips?: Map<string,string>;
+  userFavTrips?: Map<string, string>;
 
-  constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
+  constructor(private crudUserService: CrudUserService, private userTripsService: UserTripsService, private router: ActivatedRoute) {
     this.user = new User();
     this.id = this.router.snapshot.params['id'];
   }
@@ -36,43 +37,54 @@ export class UpdateComponent implements OnInit {
   public getUser(): void {
     const datos = this.crudUserService.read(this.id);
     datos.then((data) => {
-      if(data != undefined) {
+      if (data != undefined) {
         this.user = data;
         this.userCreatedTrips = this.getUserTrips(0);
         this.userRequestedTrips = this.getUserTrips(1);
         this.userFavTrips = this.getUserTrips(2);
+        this.getProfilePic();
       }
     })
-    .catch((err) => {
-      console.log(err);
-      alert("Se ha producido un error al recuperar los datos");
-    })
+      .catch((err) => {
+        console.log(err);
+        alert("Se ha producido un error al recuperar los datos");
+      })
   }
 
-  public searchPicture(){
+  public searchPicture() {
     var input = document.createElement('input')
     input.type = 'file'
     input.accept = 'image/png, image/jpeg, image/jpg'
     input.onchange = (e) => {
-      if((<HTMLInputElement>e.target).files != null){
+      if ((<HTMLInputElement>e.target).files != null) {
         this.userPicture = (<HTMLInputElement>e.target).files?.[0];
         this.user.userPic = this.userPicture?.name
+        this.uploadPictures();
+        this.getProfilePic();
       }
 
-    }
+    };
     console.log(this.user.userPic);
-    input.click()
+    input.click();
   }
 
-  private uploadPictures(){
-    if(this.userPicture != undefined){
+  private uploadPictures() {
+    if (this.userPicture != undefined) {
       const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.userPicture)
     }
     this.userPicture = undefined;
   }
 
-  private getUserTrips(tripType: number): Map<string,string> {
+  private getProfilePic() {
+    const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`);
+    const picture = getDownloadURL(pictureRef);
+    picture.then((url) => {
+      this.userPicUrl = url;
+    });
+  }
+
+  private getUserTrips(tripType: number): Map<string, string> {
     return this.userTripsService.getTripsForUser(this.id, tripType);
   }
 
@@ -82,10 +94,10 @@ export class UpdateComponent implements OnInit {
   }
 
   public update(): void {
-    if (this.user != undefined){
+    if (this.user != undefined) {
       this.uploadPictures();
       this.crudUserService.update(this.id, this.user);
-    } 
+    }
 
   }
 

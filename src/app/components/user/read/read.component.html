@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card class="cardUsuario">
     <div class="imagenPerfil">
-      <img src="./../../assets/profile_user.png">
+      <img class="profile-pic" src={{userProfilePic}}>
     </div>
     <div class="datosUsuario" *ngIf="userData != undefined">
       <p>{{ userData.userName }}</p>

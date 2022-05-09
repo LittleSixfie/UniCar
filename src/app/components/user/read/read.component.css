@@ -88,3 +88,10 @@ a:link, a:hover, a:visited {
   justify-content: center;
 }
 
+.profile-pic{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin:auto;
+}
+

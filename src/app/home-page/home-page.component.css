@@ -51,7 +51,6 @@
 
 #info{
     display: flex;
-    margin-bottom: 100px;
 }
 #dialogo{
     width: 30%;
@@ -74,4 +73,8 @@
 }
 #coches > h2{
     margin-top:-125px;
+}
+
+#container{
+    padding-bottom: 80px;
 }

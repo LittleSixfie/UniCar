@@ -81,7 +81,11 @@ export class UpdateComponent implements OnInit {
     const picture = getDownloadURL(pictureRef);
     picture.then((url) => {
       this.userPicUrl = url;
-    });
+    })
+    .catch((err) => {
+      console.log(err);
+      alert("Se ha producido un error al cargar la foto de perfil");
+    })
   }
 
   private getUserTrips(tripType: number): Map<string, string> {

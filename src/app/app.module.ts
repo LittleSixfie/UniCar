@@ -32,6 +32,7 @@ import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { SignInComponent } from './components/user/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
     ShowViajeComponent,
     HomePageComponent,
     UpdateViajeComponent,
+    SignInComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),

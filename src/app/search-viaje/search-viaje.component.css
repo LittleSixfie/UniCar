@@ -1,0 +1,119 @@
+.footer {
+    width: 100%;
+    background: #009688;
+    bottom: 0;    
+    position: fixed;
+    right: 0;
+}
+.mat-toolbar{
+    display: flex;
+    justify-content: space-around;
+    background: #009688;
+    font-size: 10px;
+    padding: 40px;
+    line-height: 100%;
+}
+
+.footer h2{
+    margin-left: 300px;
+}
+
+.footer img{
+    width: 150px;
+    height: 150px;
+}
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+}
+.header .mat-toolbar{
+    text-align: center;
+    background: #009688;
+    font-size: 20px;
+    padding: 20px;
+}
+.header h2{
+    margin-left: 550px;
+}
+.header button{
+    margin-left: 500px;
+    color: white
+}
+.header img{
+    margin-left: 42%;
+    width: 150px;
+    height: 150px;
+}
+#icon{   
+    padding-left: 5%;
+}
+#icon > mat-icon{
+    margin:auto;
+    font-size:50px;
+}
+
+.buscar{
+    margin-left: 25%;
+    
+    
+}
+
+.buscar button{
+    background-color: #009688;
+    margin-left: 20%;
+    
+}
+
+.buscar .mat-form-field{
+    width: 250px;
+}
+
+#searchbar{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #009688;
+    border-width: 2px;
+    border-style: solid;
+    margin:5%;
+    padding:10px;
+    padding-bottom: 3px ;
+}
+
+#searchbar > mat-form-field{ 
+    width: 20%;
+    margin-right:20px;
+}
+#searchbar > button{ 
+    width: 10%;
+    background-color:#009688;
+    color: white;
+    
+}
+
+#viajes{
+    background-color: white;
+    border-radius: 5px;
+    border-color: #009688;
+    border-width: 2px;
+    border-style: solid;
+    margin:10%;
+    padding:10px;
+    padding-bottom: 20px ;
+    
+}
+
+#botonDisplay > button {
+    background-color: #009688;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;  
+    
+  }
+
+
+
+section {
+    padding-bottom: 100px;
+}

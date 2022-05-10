@@ -1,0 +1,22 @@
+<div class="field">
+    <mat-form-field id="name" appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput [(ngModel)]="user.userEmail" type="text" placeholder="Correo" />
+    </mat-form-field>
+</div>
+
+<div class="field">
+    <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [(ngModel)]="user.userPassword" [type]="hide ? 'password' : 'text'" class="form-control" placeholder="Contraseña">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+
+<div class="boton">
+    <div class="register">
+        <button matButton (click)="signIn()" id="signInButton">Iniciar Sesión</button>
+    </div>
+</div>

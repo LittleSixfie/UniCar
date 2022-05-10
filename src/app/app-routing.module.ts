@@ -9,18 +9,19 @@ import { ReadComponent } from './components/user/read/read.component';
 import { UpdateComponent } from './components/user/update/update.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { SignInComponent } from './components/user/sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: 'viaje/:id', component: ShowViajeComponent },
   { path: 'crearViaje', component: ViajeComponent },
-  { path: 'updateViaje/:id', component: UpdateViajeComponent },
+  { path: 'modificarViaje/:id', component: UpdateViajeComponent },
   { path: 'registrarse', component: CreateComponent },
   { path: 'userDelete/:id', component: DeleteComponent },
   { path: 'miCuenta/:id', component: ReadComponent },
-  { path: 'userUpdate/:id', component: UpdateComponent },
+  { path: 'modificarUsuario/:id', component: UpdateComponent },
   { path: 'home', component: HomePageComponent },
   //{path:'registry', component:},
-  //{path:'sesion', component:},
+  {path:'sesion', component: SignInComponent},
   //{path:'puntuaviaje', component:},
   //{path:'puntuaCompañeros', component:},
   //{path:'politicaDatos', component:},

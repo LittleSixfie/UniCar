@@ -106,4 +106,20 @@ export class CrudUserService {
   public delete(email: String): Boolean {
     return true;
   }
+
+
+  public async getUserByMail(user: User): Promise<User> {
+    const col = collection(this.db, this.dbPath);
+    console.log(user)
+    const q = query(col, where("userEmail", "==", user.userEmail));
+    
+    const querySnapshot = await getDocs(q);
+    var user = new User();
+    
+    querySnapshot.forEach((doc) => {
+      console.log(user)
+        user = doc.data();
+    });
+    return user;
+  }
 }

@@ -45,7 +45,7 @@ export class ShowViajeComponent implements OnInit {
   }
 
   update():void{
-    this.auxRouter.navigate(["updateViaje/"+this.router.snapshot.params['id']]);
+    this.auxRouter.navigate(["modificarViaje/"+this.router.snapshot.params['id']]);
   }
 
   unirse():void {

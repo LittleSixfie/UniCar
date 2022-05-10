@@ -52,15 +52,13 @@
 
 #info{
     display: flex;
+    justify-content: center;
 }
 #dialogo{
     width: 30%;
-    margin-right: 3%;
-    margin-left: 3%;
 }
 #nube{
     width: 30%;
-    margin-right:3%
 }
 #coches{
     width: 30%;

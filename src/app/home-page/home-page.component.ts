@@ -42,15 +42,6 @@ export class HomePageComponent implements OnInit {
     ]);
   }
 
-  search(){
-    this.router.navigate(['/search/'+this.origin +
-    ';' +
-    this.destiny +
-    ';' +
-    this.date +
-    ';' +
-    this.numberOfPassengers,])
-    //this.router.navigate(['/createViaje'])
-  }  
+ 
 
 }

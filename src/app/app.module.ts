@@ -34,7 +34,12 @@ import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
+import { ManagePassengersComponent } from './manage-passengers/manage-passengers.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
+import { SearchViajeComponent } from './search-viaje/search-viaje.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,11 +55,14 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
     ShowViajeComponent,
     HomePageComponent,
     UpdateViajeComponent,
+    ManagePassengersComponent,
     SignInComponent,
+    SearchViajeComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -74,8 +82,9 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
     MatListModule,
     MatNativeDateModule,
     MatSelectModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

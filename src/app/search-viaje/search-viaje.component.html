@@ -1,0 +1,72 @@
+<section *ngIf="trips">
+
+  <div id="searchbar" (click)='home()'>
+    <mat-form-field appearance="outline">
+      <mat-label>Entre Origen</mat-label>
+      <input disabled=»disabled» matInput #input maxlength="16" placeholder="Las Palmas" [(ngModel)]="origin"
+      />
+      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Entre Destino</mat-label>
+      <input disabled=»disabled» matInput #input maxlength="16" placeholder="Campus Tafira" [(ngModel)]="destiny"/>
+      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Escoga fecha</mat-label>
+      <input disabled=»disabled» matInput [(ngModel)]="date"/>
+      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nº de Pasajeros</mat-label>
+      <input disabled=»disabled» matNativeControl [(ngModel)]="numberOfPassengers" >
+        
+    </mat-form-field>
+
+  
+
+    
+  </div>
+  <div *ngFor="let trip of trips; index as i" id="viajes">
+  
+    <div>
+      <mat-icon>account_circle</mat-icon>
+      <h1>{{ trip.nameDriver }}</h1>
+    </div>
+      <mat-icon>directions_car</mat-icon>
+      <h1> {{ trip.brand_car }} {{ trip.model_car }} </h1>
+      
+    <div>
+    <h1>{{ trip.date }} {{ trip.hour }}</h1>
+
+    </div>
+    <h1>{{ trip.origin }}</h1>
+    <div>
+      <mat-icon>arrow_downward</mat-icon>
+    </div>
+    <div>
+      <h1>{{ trip.destination }} </h1>
+    </div>
+   
+    <h1> {{ trip.seats }} plazas disponibles</h1>
+    
+    <div id="botonDisplay">
+      <button class= "button" mat-raised-button (click)="showViaje(  trip.id  )">Ver Viaje</button>
+    </div>
+   
+     
+        
+        
+        
+
+     
+  </div>
+      
+
+    
+</section>
+   
+

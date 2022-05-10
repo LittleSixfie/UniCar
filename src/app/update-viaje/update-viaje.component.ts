@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { UpdateViajeServiceService } from '../services/update-viaje-service.service';
@@ -46,7 +46,6 @@ export class UpdateViajeComponent implements OnInit {
   onUpdate(){
     this.UpdateViajeService.updateTrip(this.viaje,this.router.snapshot.params['id']);
     console.log('Data add successfully');
-    
   }
 
   ngOnInit(): void {

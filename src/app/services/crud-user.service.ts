@@ -64,15 +64,7 @@ export class CrudUserService {
     console.log(user.id)
     const res = doc(this.db, 'users/'+user.id)
     const id=setDoc(res, JSON.parse(JSON.stringify(user)));
-    let aux: string ="";
-   /* await id.then(function(data){
-      aux=data.id
-      return data.id
-    });*/
-
-    /*user.id = aux
-    this.update(aux, JSON.parse(JSON.stringify(user)))
-    this.router.navigate(["userRead/" + aux])*/
+    this.router.navigate(["userRead/" + user.id])
     return true;
   }
 

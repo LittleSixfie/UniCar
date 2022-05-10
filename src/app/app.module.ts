@@ -32,8 +32,7 @@ import { UpdateComponent } from './components/user/update/update.component';
 import { DeleteComponent } from './components/user/delete/delete.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UpdateViajeComponent } from './update-viaje/update-viaje.component';
-import { getAuth, AuthProvider } from '@firebase/auth';
-import { provideAuth } from '@angular/fire/auth';
+import { SignInComponent } from './components/user/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +48,11 @@ import { provideAuth } from '@angular/fire/auth';
     ShowViajeComponent,
     HomePageComponent,
     UpdateViajeComponent,
+    SignInComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,

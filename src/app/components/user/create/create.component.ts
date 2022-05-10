@@ -19,49 +19,34 @@ export class CreateComponent implements OnInit {
   License?: File;
   Picture?: File;
   auth: Auth = getAuth();
-  userID: string = "";
   storage = getStorage();
 
   constructor(private crudUserService: CrudUserService, private router:Router) {
-    //this.auth = getAuth();
-    //this.userAuth = this.auth.currentUser;
   }
 
   ngOnInit(): void {}
 
   async saveUser(): Promise<void> {
-    //this.auth = getAuth();
-    const registrado = await this.registerUser();
-    console.log("Registrado promise: ", registrado);
-    //this.userAuth = this.auth.currentUser;
-    if(registrado){
-      //this.uploadPictures()
-      //this.crudUserService.create(this.user)
-      console.log("This.userID: ", this.userID);
-      if(this.userID !== "") this.router.navigate(["/perfil/" + this.userID]);
-    }
+    await this.registerUser()
+    
   }
 
-  private async registerUser(): Promise<Boolean> {
-    this.auth = getAuth();
-    const promise = new Promise<Boolean>((resolve, reject) => {
-      createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
-      .then(async (userCredentials) => {
-        console.log("Registrandome, uid: ", userCredentials.user.uid);
-        this.userID = userCredentials.user.uid;
-        console.log("this.userID en registerUser(): ", this.userID)
-        this.uploadPictures()
-        //this.router.navigate(["/perfil/" + userCredentials.user.uid]);
-        await this.crudUserService.create(this.user);
-        resolve(true);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        reject(false);
-      });
+  private async registerUser(): Promise<boolean> {
+    console.log(this.user)
+    if(this.user.userEmail == undefined || this.user.userPassword == undefined) return false
+    createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
+    .then((userCredentials) => {
+      this.user.id = this.auth.currentUser?.uid
+      console.log(this.user)
+      this.uploadPictures()
+      this.crudUserService.create(this.user);
+      this.router.navigate(['/perfil/' + this.user.id]);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
     });
-    return promise;
+    return true;
   }
 
   public searchLicense() {
@@ -96,11 +81,11 @@ export class CreateComponent implements OnInit {
 
   private uploadPictures(){
     if(this.License !=  undefined){
-      const licenseRef = ref(this.storage, `${this.user.userEmail}/License/${this.user.userDriverLicense}`)
+      const licenseRef = ref(this.storage, `${this.user.id}/License/${this.user.userDriverLicense}`)
       uploadBytes(licenseRef, this.License)
-    }
+    }else 
     if(this.Picture != undefined){
-      const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
+      const pictureRef = ref(this.storage, `${this.user.id}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.Picture)
     }
     this.License = undefined;

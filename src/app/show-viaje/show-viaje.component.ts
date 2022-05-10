@@ -52,6 +52,7 @@ export class ShowViajeComponent implements OnInit {
   unirse():void {
     if(this.asientosLibres > 0 ){
       this.crudUserService.addToTrip(this.router.snapshot.params['id'], 'requestedTrips');
+      // Añadir pasajero al viaje y añadir la ruta al perfil
     } else {
       alert("No hay espacio")
     }

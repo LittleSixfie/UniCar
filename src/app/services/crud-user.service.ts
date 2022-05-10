@@ -15,8 +15,10 @@ export class CrudUserService {
   userRef;
   dbPath: string = "users";
   userData!: User;
-  auth: Auth | null = null;
-  user: UserAuth | null = null;
+  //auth: Auth | null = null;
+  //user: UserAuth | null = null;
+  auth: Auth = getAuth();
+  user?: UserAuth | null;
 
   // Converter para escribir en la base de datos o leer
   userConverter = {
@@ -63,34 +65,16 @@ export class CrudUserService {
   constructor(db: Firestore, private router:Router) {
     this.db = db;
     this.userRef = collection(this.db, this.dbPath).withConverter(this.userConverter);
-
+    this.auth = getAuth();
+    this.user = this.auth.currentUser;
     // No entra aquí, el getAuth() puede que no llegue a tiempo o que está creando una instacia nueva y por eso user es null
   }
 
   public async create(user: User): Promise<Boolean>{
-    this.auth = getAuth();
-    this.user = this.auth.currentUser;
-    console.log("usuario: ", "=>", this.user);
-    const res = collection(this.db, 'users')
-    //console.log(JSON.parse(JSON.stringify(user)));
-    const uData =  JSON.parse(JSON.stringify(user));
-    //const id=addDoc(res, JSON.parse(JSON.stringify(user)));
-    //console.log("this.user: ", this.user);
-    if(this.user !== null) {
-      const id = await setDoc(doc(this.db, 'users', this.user.uid), uData);
-      console.log("setDoc: ", id);
-    }
-
-/*       let aux: string ="";
-      await id.then(function(data){
-        aux=data.id;
-        return data.id;
-        user.id = aux
-      }); */
-      //this.update(aux, user);
-      //this.update(this.user.uid, user);
-      //this.router.navigate(["userRead/" + aux])
-      //this.router.navigate(["perfil/" + this.user.uid]);
+    console.log(user.id)
+    const res = doc(this.db, 'users/'+user.id)
+    const id=setDoc(res, JSON.parse(JSON.stringify(user)));
+    this.router.navigate(["userRead/" + user.id])
     return true;
 
   }
@@ -121,26 +105,30 @@ export class CrudUserService {
 
   public async addToTrip(trip_id: string, typeOfTrip: string): Promise<any> {
     this.auth = getAuth();
+
+    console.log("This.auth = ", this.auth);
     this.user = this.auth.currentUser;
+    console.log("This.user", this.user)
+    //console.log(this.user)
     if(this.user !== null) {
       const uid = this.user.uid;
       const userRef = doc(this.db, 'users', uid);
-      const tripRef = doc(this.db, 'trips', trip_id);
-      //const tripPath = new FieldPath('trips',trip_id);
+      const tripRef = doc(this.db, 'trips', trip_id); //trips/kjgasdhjads
+      const tripPath = new FieldPath('trips',trip_id);
       //console.log("tripRef: ", JSON.stringify(tripPath));
-      //const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': ' + tripPath + '}}'));
-      const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': }}'));
+      const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': ' + 'trips/'+trip_id + '}}'));
+      //const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': }}'));
       
       console.log(data);
 
 
       const data2 = {
         typeOfTrip: {
-          trip_id : tripRef,
+          "trip_id" : tripRef,
         }
       }
       
-      console.log("data parseada: ", data2);
+      console.log("data parseada: ", data);
       await updateDoc(userRef, data);
     } else {
       console.log("Tienes que estar conectado para añadirte a un viaje");

@@ -37,7 +37,15 @@ export class ReadComponent implements OnInit {
     const picture = getDownloadURL(pictureRef);
     picture.then((url) => {
       this.userProfilePic = url;
-    });
+    }).catch((err) => {
+      console.log(err);
+      alert("Se ha producido un error al cargar la foto de perfil");
+      let noProfilePicRef = ref(this.storage, "no_profile_pic/profile_user.png");
+      let noProfilePic = getDownloadURL(noProfilePicRef);
+      noProfilePic.then((url) =>{
+        this.userProfilePic = url;
+      })
+    })
   }
 
   public read(): void {
@@ -45,9 +53,10 @@ export class ReadComponent implements OnInit {
     datos.then((data) => {
       if(data != undefined) {
         this.userData = data;
+        //this.getProfilePic();
         this.userCreatedTrips = this.getUserTrips(0);
+        console.log(this.userCreatedTrips);
         this.userRequestedTrips = this.getUserTrips(1);
-        this.getProfilePic();
       }
     })
     .catch((err) => {

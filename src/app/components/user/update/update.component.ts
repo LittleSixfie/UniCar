@@ -85,6 +85,11 @@ export class UpdateComponent implements OnInit {
     .catch((err) => {
       console.log(err);
       alert("Se ha producido un error al cargar la foto de perfil");
+      let noProfilePicRef = ref(this.storage, "no_profile_pic/profile_user.png");
+      let noProfilePic = getDownloadURL(noProfilePicRef);
+      noProfilePic.then((url) =>{
+        this.userPicUrl = url;
+      })
     })
   }
 

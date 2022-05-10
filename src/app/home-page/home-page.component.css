@@ -17,7 +17,8 @@
 #mision{
     color:white;
     text-align: center;
-    
+    font-size: 45px;
+    margin-top: 7%;    
 }
 
 #search{
@@ -33,7 +34,7 @@
     border-color: #009688;
     border-width: 2px;
     border-style: solid;
-    margin:15%;
+    margin:8%;
     padding:15px;
     padding-bottom: 3px ;
 }

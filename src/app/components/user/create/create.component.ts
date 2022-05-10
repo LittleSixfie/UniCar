@@ -25,19 +25,19 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  saveUser(): void {
-    if(this.registerUser()){
-      this.uploadPictures()
-      this.crudUserService.create(this.user)
-    }
+  async saveUser(): Promise<void> {
+    await this.registerUser()
   }
 
-  private registerUser(): boolean {
+  private async registerUser(): Promise<boolean> {
     console.log(this.user)
     if(this.user.userEmail == undefined || this.user.userPassword == undefined) return false
     createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
-    
+      this.user.id = this.auth.currentUser?.uid
+      console.log(this.user)
+      this.uploadPictures()
+      this.crudUserService.create(this.user)
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -78,11 +78,11 @@ export class CreateComponent implements OnInit {
 
   private uploadPictures(){
     if(this.License !=  undefined){
-      const licenseRef = ref(this.storage, `${this.user.userEmail}/License/${this.user.userDriverLicense}`)
+      const licenseRef = ref(this.storage, `${this.user.id}/License/${this.user.userDriverLicense}`)
       uploadBytes(licenseRef, this.License)
-    }
+    }else 
     if(this.Picture != undefined){
-      const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
+      const pictureRef = ref(this.storage, `${this.user.id}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.Picture)
     }
     this.License = undefined;

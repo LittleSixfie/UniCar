@@ -61,17 +61,18 @@ export class CrudUserService {
   }
 
   public async create(user: User): Promise<Boolean>{
-    const res = collection(this.db, 'users')
-    const id=addDoc(res, JSON.parse(JSON.stringify(user)));
+    console.log(user.id)
+    const res = doc(this.db, 'users/'+user.id)
+    const id=setDoc(res, JSON.parse(JSON.stringify(user)));
     let aux: string ="";
-    await id.then(function(data){
+   /* await id.then(function(data){
       aux=data.id
       return data.id
-    });
+    });*/
 
-    user.id = aux
+    /*user.id = aux
     this.update(aux, JSON.parse(JSON.stringify(user)))
-    this.router.navigate(["userRead/" + aux])
+    this.router.navigate(["userRead/" + aux])*/
     return true;
   }
 
@@ -99,7 +100,7 @@ export class CrudUserService {
   }
 
 
-  public async getUserByMail(user: User): Promise<User> {
+  /*public async getUserByMail(user: User): Promise<User> {
     const col = collection(this.db, this.dbPath);
     console.log(user)
     const q = query(col, where("userEmail", "==", user.userEmail));
@@ -112,5 +113,5 @@ export class CrudUserService {
         user = doc.data();
     });
     return user;
-  }
+  }*/
 }

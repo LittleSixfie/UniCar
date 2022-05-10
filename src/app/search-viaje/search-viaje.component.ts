@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { collection, query } from 'firebase/firestore';
 import { combineLatest, map } from 'rxjs';
 import { HomePageComponent } from '../home-page/home-page.component';
@@ -18,20 +18,17 @@ export class SearchViajeComponent implements OnInit {
   trips: Trip[] = []
   isSearchEmpty: boolean | undefined
   date: string | null = ""
+  dateLarge = new Date();
   aux: string = ""
   ruta: string[] = []
   origin: string = ""
   destiny: string = ""
   numberOfPassengers: number = 0
-  searchParams = {
-    name: "",
-    origin: "",
-    destination: "",
-  };
+  
  
-  constructor(private afsCompact: AngularFirestore, private search: SearchService,private router :ActivatedRoute,private home: HomePageComponent,
-    public datepipe: DatePipe) { 
-      //console.log(this.router.snapshot.params['id'])
+  constructor(private afsCompact: AngularFirestore, private search: SearchService,private router :ActivatedRoute,private auxrouter: Router
+    ,public datepipe: DatePipe) { 
+      
       this.aux = this.router.snapshot.params['id']
       this.ruta = this.aux.split(";")
       console.log(this.ruta[2])
@@ -39,24 +36,33 @@ export class SearchViajeComponent implements OnInit {
       this.origin = this.ruta[0]
       this.destiny = this.ruta[1]
       this.numberOfPassengers = Number(this.ruta[3])
-      console.log(this.date)
       //const viajes = this.search.search('Telde','Tafira',3,'23/04/2022')
       
       const viajes = this.search.search(this.origin,this.destiny,this.numberOfPassengers,this.date)
       viajes.then((response) => {
         this.trips = response;
       })
-      console.log(this.trips)
+      
     
+  }
+  public home(){
+    this.auxrouter.navigate(['/home'])
+  }
+
+  public showViaje(id: any){
+    this.auxrouter.navigate(['/viaje/'+id])
   }
 
   onSearchTrip() {
-    this.date = this.datepipe.transform(this.home.date,'dd-mm-yyyy')
-    const viajes = this.search.search(this.home.origin,this.home.destiny,this.home.numberOfPassengers,this.date)
+    this.trips = [];
+    console.log(this.trips.length)
+    this.date = this.datepipe.transform(this.dateLarge,'d/MM/yyyy')
+    const viajes = this.search.search(this.origin,this.destiny,this.numberOfPassengers,this.date)
     
     viajes.then((response) => {
       this.trips = response;
     })
+    
     
     
     /*

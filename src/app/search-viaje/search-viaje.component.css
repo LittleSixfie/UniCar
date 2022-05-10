@@ -103,6 +103,17 @@
     
 }
 
+#botonDisplay > button {
+    background-color: #009688;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;  
+    
+  }
+
+
+
 section {
     padding-bottom: 100px;
 }

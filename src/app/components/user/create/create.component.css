@@ -1,21 +1,18 @@
 .title_text {
-    position: center;
-    margin-left: 650px;
-    font-family: 'Roboto';
-}
-
-.header .mat-toolbar {
-    position: center;
-    height: 100px;
-    background: #009688;
+    position: relative;
+    left: 40%;
+    margin-top: 15px;
+    font-size: large;
 }
 
 .user_submit_form {
-    margin-left: 350px;
+    position: relative;
+    margin-left: 25%;
 }
 
 .field .mat-form-field {
-    width: 700px;
+    position: relative;
+    width: 60%;
 }
 
 .upload_buttons {
@@ -23,51 +20,43 @@
 }
 
 #name {
-    width: 500px;
+    position: relative;
+    width: 40%;
 }
 
 #age {
-    margin-left: 15px;
-    width: 185px;
+    position: relative;
+    width: 18%;
+    margin-left: 2%;
 }
 
 #carnet {
     background-color: #4DB6AC;
     color: white;
-    border-radius: 100px;
-    font-family: 'Roboto';
-    text-align: center;
-    font-size: 16px;
-    width: 220px;
-    height: 44px;
+    min-width: fit-content;
+    height: 38px;
+    margin-right: 20px;
 }
 
 #perfil {
     background-color: #4DB6AC;
     color: white;
-    border-radius: 100px;
-    font-family: 'Roboto';
-    text-align: center;
-    font-size: 16px;
-    width: 149px;
-    height: 44px;
-    margin-top: 5px;
+    min-width: fit-content;
+    height: 38px;
 }
 
 #regBut {
     background-color: #4DB6AC;
     color: white;
-    border-radius: 100px;
-    font-family: 'Roboto';
-    text-align: center;
-    font-size: 16px;
-    width: 121px;
-    height: 40px;
+    min-width: fit-content;
+    width: 111px;
+    height: 38px;
     margin-top: 5px;
 }
 
 .register{
-    margin-left: 300px;
+    position: relative;
+    left: 24%;
     margin-top: 25px;
     margin-bottom: 20%;
 }

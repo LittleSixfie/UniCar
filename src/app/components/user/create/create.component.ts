@@ -37,8 +37,8 @@ export class CreateComponent implements OnInit {
       this.user.id = this.auth.currentUser?.uid
       console.log(this.user)
       this.uploadPictures()
-      
       this.crudUserService.create(this.user)
+      
     })
     .catch((error) => {
       const errorCode = error.code;

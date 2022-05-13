@@ -1,0 +1,33 @@
+.field{
+    position: relative;
+    left: 23%;
+    right: 27%;
+}
+
+#name{
+    margin-top: 50px;
+    width: 50%;
+}
+
+#passwd{
+    width: 50%;
+}
+
+#signInButton{
+    background-color: #4DB6AC;
+    color: white;
+    width: 8%;
+    min-width: fit-content;
+}
+
+.register{
+    position: relative;
+    left: 43%;
+    right:47%;
+    margin-bottom: 35px;
+}
+
+p{
+    position: relative;
+    left: 23%;
+}

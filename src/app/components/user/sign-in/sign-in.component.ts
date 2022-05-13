@@ -22,7 +22,11 @@ export class SignInComponent implements OnInit {
 
   public signIn(){
     
-    if(this.user.userEmail == undefined || this.user.userPassword == undefined) return false
+    console.log(this.auth.currentUser);   
+    if(this.user.userEmail == undefined || this.user.userPassword == undefined){
+      alert("Por favor introduzca un usuario y contraseña");
+      return false
+    } 
     signInWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword).then(async () => {
       if(this.auth.currentUser?.uid != undefined){
         this.user = await this.crudUserService.read(this.auth.currentUser?.uid)
@@ -34,6 +38,7 @@ export class SignInComponent implements OnInit {
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("No se ha podido determinar que las credenciales proporcionadas sean auténticas.")
     })
     return;
   }

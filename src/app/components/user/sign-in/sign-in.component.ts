@@ -4,6 +4,8 @@ import { getAuth , signInWithEmailAndPassword } from 'firebase/auth'
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { Router } from '@angular/router';
 
+import { AppComponent } from 'src/app/app.component';
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -15,7 +17,7 @@ export class SignInComponent implements OnInit {
   user: User = new User();
   auth = getAuth();
 
-  constructor(private crudUserService: CrudUserService, private router:Router) { }
+  constructor(private crudUserService: CrudUserService, private router:Router, private home:AppComponent) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,7 @@ export class SignInComponent implements OnInit {
     signInWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword).then(async () => {
       if(this.auth.currentUser?.uid != undefined){
         this.user = await this.crudUserService.read(this.auth.currentUser?.uid)
+        this.home.setUser(this.auth.currentUser!.uid)
         console.log(this.user)
       } else {
         console.log('Ta roto')

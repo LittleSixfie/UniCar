@@ -15,7 +15,7 @@ export class HeaderSignInComponent implements OnInit {
 
   public vamoPalPerfil() {
     console.log('/miCuenta',  this.auth.currentUser?.uid)
-    this.router.navigate(['/miCuenta' + this.auth.currentUser?.uid  ]);
+    this.router.navigate(['/miCuenta/' + this.auth.currentUser?.uid  ]);
   }
 
   public home() {

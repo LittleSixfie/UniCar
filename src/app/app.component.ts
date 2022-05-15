@@ -9,4 +9,19 @@ import { CrudUserService } from './services/crud-user.service';
 })
 export class AppComponent {
   title = 'UniCar';
+  user = false;
+  userid=""
+
+  setUser(userAuth:string){
+    this.userid= userAuth;
+    this.user=true
+  }
+
+  getUser(): string {
+    if(this.user){
+      return this.userid
+    }
+    return ""
+  }
+  
 }

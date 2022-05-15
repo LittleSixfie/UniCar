@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
     signInWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword).then(async () => {
       if(this.auth.currentUser?.uid != undefined){
         this.user = await this.crudUserService.read(this.auth.currentUser?.uid)
-        this.home.setUser(this.auth.currentUser!.uid)
+        this.home.setUser(this.auth.currentUser!.uid, this.user.userName as string)
         console.log(this.user)
       } else {
         console.log('Ta roto')

@@ -11,15 +11,24 @@ export class AppComponent {
   title = 'UniCar';
   user = false;
   userid=""
+  userName=""
 
-  setUser(userAuth:string){
+  setUser(userAuth:string, usernombre:string){
     this.userid= userAuth;
     this.user=true
+    this.userName = usernombre
   }
 
-  getUser(): string {
+  getUserId(): string {
     if(this.user){
       return this.userid
+    }
+    return ""
+  }
+
+  getUserName(): string {
+    if(this.user){
+      return this.userName
     }
     return ""
   }

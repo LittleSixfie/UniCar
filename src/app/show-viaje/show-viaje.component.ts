@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShowViajeService } from '../services/show-viaje.service';
 import { Trip } from '../models/trips.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-show-viaje',
   templateUrl: './show-viaje.component.html',
@@ -25,7 +26,7 @@ export class ShowViajeComponent implements OnInit {
   rate = 2.5;
   asientosLibres:number =0;
 
-  constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router ) {
+  constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router, private home: AppComponent ) {
     const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
     viajes.then((response) => {
       console.log(response.data());
@@ -34,7 +35,7 @@ export class ShowViajeComponent implements OnInit {
         return undefined;
       }
       this.viaje= response.data();
-     // this.asientosLibres = response.data().seats - response.data().passenger.length
+      this.asientosLibres = response.data().seats - response.data().passenger.length
       return true;
     })
     .catch((err) => {
@@ -60,4 +61,18 @@ export class ShowViajeComponent implements OnInit {
     this.auxRouter.navigate(["managePassenger/"+this.router.snapshot.params['id']]);
   }
   ngOnInit(): void {};
+
+  userLogged(): boolean{
+    if(this.home.getUserName() == ""){
+      return false
+    }
+    return true
+  }
+
+  userLoggedOwns(): boolean{
+    if(this.home.getUserName() == ""){
+      return false
+    }
+    return true
+  }
 }

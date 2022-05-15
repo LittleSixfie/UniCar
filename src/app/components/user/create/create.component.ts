@@ -43,6 +43,7 @@ export class CreateComponent implements OnInit {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert(error.message)
     });
     return true;
   }

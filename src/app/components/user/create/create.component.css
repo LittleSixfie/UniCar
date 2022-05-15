@@ -1,17 +1,14 @@
 .title_text {
-    position: relative;
-    left: 40%;
+    margin-left: 40%;
     margin-top: 15px;
     font-size: large;
 }
 
 .user_submit_form {
-    position: relative;
     margin-left: 25%;
 }
 
 .field .mat-form-field {
-    position: relative;
     width: 60%;
 }
 
@@ -20,7 +17,6 @@
 }
 
 #name {
-    position: relative;
     width: 40%;
 }
 
@@ -55,8 +51,7 @@
 }
 
 .register{
-    position: relative;
-    left: 24%;
+    margin-left: 24%;
     margin-top: 25px;
     margin-bottom: 20%;
 }

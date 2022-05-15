@@ -40,6 +40,7 @@ import { SearchViajeComponent } from './search-viaje/search-viaje.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { HeaderSignInComponent } from './header-sign-in/header-sign-in.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DatePipe } from '@angular/common';
     ManagePassengersComponent,
     SignInComponent,
     SearchViajeComponent,
+    HeaderSignInComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),

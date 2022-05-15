@@ -71,7 +71,7 @@ export class CrudUserService {
     console.log(user.id)
     const res = doc(this.db, 'users/'+user.id)
     const id=setDoc(res, JSON.parse(JSON.stringify(user)));
-    this.router.navigate(['miCuenta/' + aux]);
+    this.router.navigate(['miCuenta/' +  user.id]);
     return true;
   }
 
@@ -89,9 +89,9 @@ export class CrudUserService {
   }
 
   public update(id: string, user: User): Boolean {
-    const userDocRef = doc(this.db, 'user/' + id);
+    const userDocRef = doc(this.db, 'users/' + id);
     //No funciona porque haceis una movida turboloca ~6d2
-    setDoc(userDocRef, user);
+    setDoc(userDocRef, JSON.parse(JSON.stringify(user)));
     this.router.navigate(['miCuenta/' + id]);
     return true;
   }

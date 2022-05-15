@@ -1,16 +1,14 @@
-.field{
-    position: relative;
-    left: 23%;
-    right: 27%;
+div{
+    margin-left:20%;
 }
 
 #name{
     margin-top: 50px;
-    width: 50%;
+    width: 70%; 
 }
 
 #passwd{
-    width: 50%;
+    width: 70%;
 }
 
 #signInButton{
@@ -21,13 +19,11 @@
 }
 
 .register{
-    position: relative;
-    left: 43%;
-    right:47%;
+    margin-left: 43%;
+    margin-right:47%;
     margin-bottom: 35px;
 }
 
 p{
-    position: relative;
-    left: 23%;
+    margin-left: 20%;
 }

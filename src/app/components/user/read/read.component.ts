@@ -33,7 +33,7 @@ export class ReadComponent implements OnInit {
   }
 
   private getProfilePic() {
-    const pictureRef = ref(this.storage, `${this.userData.userEmail}/Picture/${this.userData.userPic}`);
+    const pictureRef = ref(this.storage, `${this.userData.id}/Picture/${this.userData.userPic}`);
     const picture = getDownloadURL(pictureRef);
     picture.then((url) => {
       this.userProfilePic = url;
@@ -53,7 +53,7 @@ export class ReadComponent implements OnInit {
     datos.then((data) => {
       if(data != undefined) {
         this.userData = data;
-        //this.getProfilePic();
+        this.getProfilePic();
         this.userCreatedTrips = this.getUserTrips(0);
         console.log(this.userCreatedTrips);
         this.userRequestedTrips = this.getUserTrips(1);

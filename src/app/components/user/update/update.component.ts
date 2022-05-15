@@ -70,14 +70,14 @@ export class UpdateComponent implements OnInit {
 
   private uploadPictures() {
     if (this.userPicture != undefined) {
-      const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`)
+      const pictureRef = ref(this.storage, `${this.user.id}/Picture/${this.user.userPic}`)
       uploadBytes(pictureRef, this.userPicture)
     }
     this.userPicture = undefined;
   }
 
   private getProfilePic() {
-    const pictureRef = ref(this.storage, `${this.user.userEmail}/Picture/${this.user.userPic}`);
+    const pictureRef = ref(this.storage, `${this.user.id}/Picture/${this.user.userPic}`);
     const picture = getDownloadURL(pictureRef);
     picture.then((url) => {
       this.userPicUrl = url;

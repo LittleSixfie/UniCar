@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { addDoc, doc, DocumentReference, FieldPath, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Data, Router } from '@angular/router';
 import { Auth, getAuth, onAuthStateChanged, User as UserAuth } from "firebase/auth";
+import { type } from 'os';
 
 
 @Injectable({
@@ -106,30 +107,14 @@ export class CrudUserService {
   public async addToTrip(trip_id: string, typeOfTrip: string): Promise<any> {
     this.auth = getAuth();
 
-    console.log("This.auth = ", this.auth);
     this.user = this.auth.currentUser;
-    console.log("This.user", this.user)
-    //console.log(this.user)
     if(this.user !== null) {
       const uid = this.user.uid;
       const userRef = doc(this.db, 'users', uid);
       const tripRef = doc(this.db, 'trips', trip_id); //trips/kjgasdhjads
-      const tripPath = new FieldPath('trips',trip_id);
-      //console.log("tripRef: ", JSON.stringify(tripPath));
-      const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': ' + 'trips/'+trip_id + '}}'));
-      //const data = JSON.parse(JSON.stringify('{' + typeOfTrip + ': {' + trip_id + ': }}'));
-      
-      console.log(data);
-
-
-      const data2 = {
-        typeOfTrip: {
-          "trip_id" : tripRef,
-        }
-      }
-      
-      console.log("data parseada: ", data);
-      await updateDoc(userRef, data);
+      await updateDoc(userRef, {[`${typeOfTrip}`] : {
+        [`${trip_id}`] : tripRef
+      }});
     } else {
       console.log("Tienes que estar conectado para añadirte a un viaje");
     }

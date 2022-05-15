@@ -49,15 +49,15 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    width: 75%;
+    width: 90%;
     flex-wrap: wrap;
     padding: 3em;
 }
-.viajesCreados, .viajesSolicitados {
+.viajesCreados, .viajesSolicitados, .viajesFavoritos {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 45%;
+    width: 30%;
 }
 .tituloViajes {
     display: flex;
@@ -65,7 +65,7 @@
     align-items: center;
     font-size: large;
 }
-.matViajesCreados, .matViajesSolicitados {
+.matViajesCreados, .matViajesSolicitados, .matViajesFavoritos {
     background-color: rgb(226,226,226);
     padding: 16px 0px 16px 0px;
 }

@@ -16,6 +16,7 @@ export class ReadComponent implements OnInit {
   userData?: User;
   userCreatedTrips?:Map<string,string>;
   userRequestedTrips?:Map<string,string>;
+  userFavTrips?:Map<string,string>;
 
   //userData = user desde auth
   constructor(private crudUserService: CrudUserService, private showViajeService: ShowViajeService, private userTripsService:UserTripsService, private router: ActivatedRoute) { // conseguir el email o id atraves del auth como parámetro
@@ -34,6 +35,7 @@ export class ReadComponent implements OnInit {
         this.userData = data;
         this.userCreatedTrips = this.getUserTrips(0);
         this.userRequestedTrips = this.getUserTrips(1);
+        this.userFavTrips = this.getUserTrips(2);
       }
     })
     .catch((err) => {

@@ -6,17 +6,19 @@
 </div>
 
 <div class="field">
-    <mat-form-field appearance="outline">
+    <mat-form-field id="passwd" appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput [(ngModel)]="user.userPassword" [type]="hide ? 'password' : 'text'" class="form-control" placeholder="Contraseña">
+        <input matInput [(ngModel)]="user.userPassword" [type]="hide ? 'password' : 'text'" placeholder="Contraseña">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
     </mat-form-field>
 </div>
 
-<div class="boton">
-    <div class="register">
-        <button matButton (click)="signIn()" id="signInButton">Iniciar Sesión</button>
-    </div>
+<div class="register">
+    <button mat-button (click)="signIn()" id="signInButton">Iniciar sesion</button>
 </div>
+
+<p>¿No tienes una cuenta todavía? <a [routerLink]="'/userCreate'">Registrate aqui</a></p>
+
+<p><a href="#">¿Olvidastes tu contraseña?</a></p>

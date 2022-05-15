@@ -67,17 +67,10 @@ export class CrudUserService {
     );
   }
 
-  public async create(user: User): Promise<Boolean> {
-    const res = collection(this.db, 'users');
-    const id = addDoc(res, JSON.parse(JSON.stringify(user)));
-    let aux: string = '';
-    await id.then(function (data) {
-      aux = data.id;
-      return data.id;
-    });
-
-    user.id = aux;
-    this.update(aux, JSON.parse(JSON.stringify(user)));
+  public async create(user: User): Promise<Boolean>{
+    console.log(user.id)
+    const res = doc(this.db, 'users/'+user.id)
+    const id=setDoc(res, JSON.parse(JSON.stringify(user)));
     this.router.navigate(['miCuenta/' + aux]);
     return true;
   }
@@ -105,21 +98,5 @@ export class CrudUserService {
 
   public delete(email: String): Boolean {
     return true;
-  }
-
-
-  public async getUserByMail(user: User): Promise<User> {
-    const col = collection(this.db, this.dbPath);
-    console.log(user)
-    const q = query(col, where("userEmail", "==", user.userEmail));
-    
-    const querySnapshot = await getDocs(q);
-    var user = new User();
-    
-    querySnapshot.forEach((doc) => {
-      console.log(user)
-        user = doc.data();
-    });
-    return user;
   }
 }

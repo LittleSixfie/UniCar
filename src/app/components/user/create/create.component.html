@@ -1,6 +1,4 @@
-
-
-<p class="title_text">Crear una cuenta de UniCar</p>
+<h2 class="title_text">Crear una cuenta de UniCar</h2>
 <div class="user_submit_form">
 
     <div class="field">
@@ -10,7 +8,7 @@
         </mat-form-field>
         <mat-form-field id="age" appearance="outline">
             <mat-label>Edad</mat-label>
-            <input matInput type="text" class="form-control" id="age" required [(ngModel)]="user.userAge"
+            <input matInput type="text" id="age" required [(ngModel)]="user.userAge"
                 placeholder="Edad" />
         </mat-form-field>
     </div>
@@ -18,7 +16,7 @@
     <div class="field">
         <mat-form-field appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" class="form-control" required
+            <input matInput [type]="hide ? 'password' : 'text'"
                 [(ngModel)]="user.userPassword" placeholder="Contraseña">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -29,7 +27,7 @@
     <div class="field">
         <mat-form-field appearance="outline">
             <mat-label>Repetir contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" class="form-control" id="passwdRepeat"
+            <input matInput [type]="hide ? 'password' : 'text'" id="passwdRepeat"
                 placeholder="Repetir contraseña">
         </mat-form-field>
     </div>
@@ -37,7 +35,7 @@
     <div class="field">
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput type="text" class="form-control" id="email" required [(ngModel)]="user.userEmail"
+            <input matInput type="text" id="email" required [(ngModel)]="user.userEmail"
                 placeholder="Correo Electrónico">
         </mat-form-field>
     </div>
@@ -45,22 +43,22 @@
     <div class="field">
         <mat-form-field appearance="outline">
             <mat-label>Telefono</mat-label>
-            <input matInput type="text" class="form-control" id="phone" required [(ngModel)]="user.userTlf"
+            <input matInput type="text" id="phone" required [(ngModel)]="user.userTlf"
                 placeholder="Telefono">
         </mat-form-field>
     </div>
 
     <div class="upload_buttons">
-        <button matButton (click)="searchLicense()" id="carnet">Subir carnet de conducir
+        <button mat-button (click)="searchLicense()" id="carnet">Subir carnet de conducir
             <mat-icon>file_upload</mat-icon>
         </button>
-        <button matButton (click)="searchPicture()" id="perfil">Subir foto de perfil
+        <button mat-button (click)="searchPicture()" id="perfil">Subir foto de perfil
             <mat-icon>file_upload</mat-icon>
         </button>
     </div>
 
     <div class="register">
-        <button matButton (click)="saveUser()" id="regBut">Registrarme</button>
+        <button mat-button (click)="saveUser()" id="regBut">Registrarme</button>
     </div>
 
 </div>

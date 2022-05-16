@@ -17,6 +17,10 @@ export class HeaderSignInComponent implements OnInit {
     this.router.navigate(['/miCuenta/' + this.auth.currentUser?.uid  ]);
   }
 
+  public vamoPalViaje() {
+    this.router.navigate(['/crearViaje' ]);
+  }
+
   public home() {
     this.router.navigate(['/home']);
   }

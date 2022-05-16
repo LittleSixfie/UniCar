@@ -7,8 +7,11 @@ import {
   getDocs,
 } from '@angular/fire/firestore';
 import { User } from '../models/user';
-import { addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { addDoc, doc, DocumentReference, FieldPath, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Data, Router } from '@angular/router';
+import { Auth, getAuth, onAuthStateChanged, User as UserAuth } from "firebase/auth";
+import { type } from 'os';
+
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +21,11 @@ export class CrudUserService {
   userRef;
   dbPath: string = 'users';
   userData!: User;
+  //auth: Auth | null = null;
+  //user: UserAuth | null = null;
+  auth: Auth = getAuth();
+  user?: UserAuth | null;
+
   // Converter para escribir en la base de datos o leer
   userConverter = {
     toFirestore: (u: User) => {
@@ -65,6 +73,8 @@ export class CrudUserService {
     this.userRef = collection(this.db, this.dbPath).withConverter(
       this.userConverter
     );
+    this.auth = getAuth();
+    this.user = this.auth.currentUser;
   }
 
   public async create(user: User): Promise<Boolean>{
@@ -72,6 +82,7 @@ export class CrudUserService {
     const id=setDoc(res, JSON.parse(JSON.stringify(user)));
     this.router.navigate(['miCuenta/' +  user.id]);
     return true;
+
   }
 
   public async read(id: string): Promise<User> {
@@ -97,5 +108,22 @@ export class CrudUserService {
 
   public delete(email: String): Boolean {
     return true;
+  }
+
+  public async addToTrip(trip_id: string, typeOfTrip: string): Promise<any> {
+    this.auth = getAuth();
+
+    this.user = this.auth.currentUser;
+    if(this.user !== null) {
+      const uid = this.user.uid;
+      const userRef = doc(this.db, 'users', uid);
+      const tripRef = doc(this.db, 'trips', trip_id); //trips/kjgasdhjads
+      await updateDoc(userRef, {[`${typeOfTrip}`] : {
+        [`${trip_id}`] : tripRef
+      }});
+    } else {
+      console.log("Tienes que estar conectado para añadirte a un viaje");
+    }
+
   }
 }

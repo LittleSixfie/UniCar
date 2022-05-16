@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword } from '@firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, Auth, User as UserAuth } from '@firebase/auth';
 import { User } from 'src/app/models/user';
 import { CrudUserService } from 'src/app/services/crud-user.service';
 import { Router } from '@angular/router';
@@ -16,17 +16,19 @@ export class CreateComponent implements OnInit {
   user: User = new User();
   submitted = false;
   hide = true;
-  License?: File
-  Picture?: File
-  auth = getAuth()
-  storage = getStorage()
+  License?: File;
+  Picture?: File;
+  auth: Auth = getAuth();
+  storage = getStorage();
 
-  constructor(private crudUserService: CrudUserService, private router:Router) {}
+  constructor(private crudUserService: CrudUserService, private router:Router) {
+  }
 
   ngOnInit(): void {}
 
   async saveUser(): Promise<void> {
     await this.registerUser()
+    
   }
 
   private async registerUser(): Promise<boolean> {

@@ -18,6 +18,7 @@ export class ReadComponent implements OnInit {
   userData: User;
   userCreatedTrips?:Map<string,string>;
   userRequestedTrips?:Map<string,string>;
+  userFavTrips?:Map<string,string>;
 
   storage = getStorage()
   userProfilePic?:string;
@@ -56,6 +57,7 @@ export class ReadComponent implements OnInit {
         this.getProfilePic();
         this.userCreatedTrips = this.getUserTrips(0);
         this.userRequestedTrips = this.getUserTrips(1);
+        this.userFavTrips = this.getUserTrips(2);
       }
     })
     .catch((err) => {

@@ -30,12 +30,10 @@ export class CreateComponent implements OnInit {
   }
 
   private async registerUser(): Promise<boolean> {
-    console.log(this.user)
     if(this.user.userEmail == undefined || this.user.userPassword == undefined) return false
     createUserWithEmailAndPassword(this.auth, this.user.userEmail, this.user.userPassword)
     .then((userCredentials) => {
       this.user.id = this.auth.currentUser?.uid
-      console.log(this.user)
       this.uploadPictures()
       this.crudUserService.create(this.user)
       
@@ -59,7 +57,6 @@ export class CreateComponent implements OnInit {
       }
 
     }
-    console.log(this.user.userDriverLicense);
     input.click()
   }
 
@@ -74,7 +71,6 @@ export class CreateComponent implements OnInit {
       }
 
     }
-    console.log(this.user.userDriverLicense);
     input.click()
   }
 

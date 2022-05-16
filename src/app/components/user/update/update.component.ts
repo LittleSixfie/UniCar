@@ -64,7 +64,6 @@ export class UpdateComponent implements OnInit {
       }
 
     };
-    console.log(this.user.userPic);
     input.click();
   }
 

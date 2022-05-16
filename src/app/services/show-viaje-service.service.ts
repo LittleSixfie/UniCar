@@ -19,7 +19,6 @@ export class ShowViajeService {
 
   read(string: string):Promise<any>{
     const dbInstance = doc(this.firestore, ("trips/"+string));
-    console.log("trips/"+string)
     return getDoc(dbInstance)
       
   }

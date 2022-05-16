@@ -29,7 +29,6 @@ export class UpdateViajeComponent implements OnInit {
     private UpdateViajeService: UpdateViajeServiceService) {
     const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
     viajes.then((response) => {
-      console.log(response.data());
       if (response.data() == undefined) {
         console.log('Not Found')
         return undefined;

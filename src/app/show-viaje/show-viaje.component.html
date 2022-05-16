@@ -33,20 +33,20 @@
     </div>
   </mat-card>
 
-  <div class="boton">
-    <button mat-raised-button class="unirseBoton" (click)="update()"  *ngIf="userLoggedOwns()">
+    <div class="boton">
+
+    
+    <button mat-raised-button id="EditarViaje" class="unirseBoton" (click)="update()"  *ngIf="userLoggedOwns()">
       Editar Viaje
     </button>
-  </div>
-
-
-  <div class="boton">
-    <button mat-raised-button class="unirseBoton" *ngIf="!(userLogged() == userLoggedOwns())" (click)="unirse()">
+  
+    <button mat-raised-button id="UniserViaje "class="unirseBoton" *ngIf="!(userLogged() == userLoggedOwns())" (click)="unirse()">
       Unirse
     </button>
-    <button mat-raised-button class="unirseBoton"  *ngIf="userLoggedOwns()" (click)="managePassenger()">
+    <button mat-raised-button class="unirseBoton"  id="AdministrarBoton" *ngIf="userLoggedOwns()" (click)="managePassenger()">
       Administrar pasajeros
     </button>
   </div>
+  
 </div>
 

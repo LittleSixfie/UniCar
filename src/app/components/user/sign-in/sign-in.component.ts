@@ -24,7 +24,6 @@ export class SignInComponent implements OnInit {
 
   public signIn(){
     
-    console.log(this.auth.currentUser);   
     if(this.user.userEmail == undefined || this.user.userPassword == undefined){
       alert("Por favor introduzca un usuario y contraseña");
       return false
@@ -33,7 +32,6 @@ export class SignInComponent implements OnInit {
       if(this.auth.currentUser?.uid != undefined){
         this.user = await this.crudUserService.read(this.auth.currentUser?.uid)
         this.home.setUser(this.auth.currentUser!.uid, this.user.userName as string)
-        console.log(this.user)
       } else {
         console.log('Ta roto')
       }

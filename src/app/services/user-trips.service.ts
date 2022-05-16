@@ -38,7 +38,6 @@ export class UserTripsService {
         } else {
           var a = JSON.stringify(this.userData.favTrips);
         }
-        console.log(a, "hola")
         var userCreatedTrips = Object.keys(JSON.parse(a));
         userCreatedTrips.forEach((trip) => {
           if (trip != undefined) {

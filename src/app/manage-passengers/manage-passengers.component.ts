@@ -19,7 +19,6 @@ export class ManagePassengersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let viaje = this.showViaje.read(this.router.snapshot.params['id'])
     await viaje.then((response) => {
-      console.log(response.data());
       if (response.data() == undefined) {
         console.log('Not Found')
         return undefined;

@@ -11,7 +11,7 @@ import { AppComponent } from '../app.component';
 export class ShowViajeComponent implements OnInit {
   viaje:Trip ={
     id:"",
-    nameDriver:"",
+    nameDriver:"noExist",
     date:"",
     origin:"",
     destination:"",
@@ -29,7 +29,6 @@ export class ShowViajeComponent implements OnInit {
   constructor(private showViaje: ShowViajeService, private router :ActivatedRoute, private auxRouter: Router, private home: AppComponent ) {
     const viajes =  this.showViaje.read(this.router.snapshot.params['id'])
     viajes.then((response) => {
-      console.log(response.data());
       if (response.data() == undefined) {
         console.log('Not Found')
         return undefined;
@@ -72,7 +71,10 @@ export class ShowViajeComponent implements OnInit {
   userLoggedOwns(): boolean{
     if(this.home.getUserName() == ""){
       return false
+    } else if(this.home.getUserName() == this.viaje.nameDriver){
+      return true
+    } else {
+      return false
     }
-    return true
   }
 }

@@ -68,7 +68,6 @@ export class CrudUserService {
   }
 
   public async create(user: User): Promise<Boolean>{
-    console.log(user.id)
     const res = doc(this.db, 'users/'+user.id)
     const id=setDoc(res, JSON.parse(JSON.stringify(user)));
     this.router.navigate(['miCuenta/' +  user.id]);

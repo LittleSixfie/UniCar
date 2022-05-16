@@ -55,7 +55,6 @@ export class ReadComponent implements OnInit {
         this.userData = data;
         this.getProfilePic();
         this.userCreatedTrips = this.getUserTrips(0);
-        console.log(this.userCreatedTrips);
         this.userRequestedTrips = this.getUserTrips(1);
       }
     })

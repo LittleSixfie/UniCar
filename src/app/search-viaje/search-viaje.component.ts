@@ -31,7 +31,6 @@ export class SearchViajeComponent implements OnInit {
       
       this.aux = this.router.snapshot.params['id']
       this.ruta = this.aux.split(";")
-      console.log(this.ruta[2])
       this.date = this.datepipe.transform(this.ruta[2],'d/MM/yyyy')
       this.origin = this.ruta[0]
       this.destiny = this.ruta[1]
@@ -55,7 +54,6 @@ export class SearchViajeComponent implements OnInit {
 
   onSearchTrip() {
     this.trips = [];
-    console.log(this.trips.length)
     this.date = this.datepipe.transform(this.dateLarge,'d/MM/yyyy')
     const viajes = this.search.search(this.origin,this.destiny,this.numberOfPassengers,this.date)
     
